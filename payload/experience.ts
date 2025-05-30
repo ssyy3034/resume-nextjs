@@ -5,45 +5,28 @@ const experience: IExperience.Payload = {
   disableTotalPeriod: false,
   list: [
     {
-      title: 'Linux Foundation',
+      title: '맥도날드 순천 조례 DT점',
       positions: [
         {
-          title: 'System Engineer',
-          startedAt: '1996-05',
+          title: 'Team Leader',
+          startedAt: '2022-11',
           descriptions: [
-            'Steering Kernel patching and updates for various distributions',
-            'Automating deployment and integration processes for Linux servers',
-            'Spearheading initiatives to enhance Linux kernel security',
-            'Collaborating with global developers to coordinate code contributions',
+            '시프트 단위로 팀을 운영하며 매장 업무를 조율함',
+            '인력 배치와 업무 분담을 통해 효율적인 운영을 도모함',
+            '동료 간 갈등을 중재하고 원활한 소통을 위해 노력함',
+            '고객 응대와 품질 유지에 있어 책임감을 가지고 일함',
           ],
-          skillKeywords: ['C', 'Linux', 'Kernel', 'Security', 'Automation'],
+          skillKeywords: ['팀 운영', '리더십', '의사소통', '책임감', '갈등 조율'],
         },
         {
-          title: 'System Engineer Intern',
-          startedAt: '1996-02',
-          endedAt: '1996-05',
+          title: '그릴 & 카운터 멀티 크루',
+          startedAt: '2022-11',
+          endedAt: '2023-05',
           descriptions: [
-            'Assisted senior engineers in maintaining and updating kernel patches for Linux distributions',
-            'Supported deployment and integration tasks for Linux server environments',
-            'Conducted research on Linux kernel security practices and presented findings to the team',
+            '그릴과 카운터 포지션을 교대하며 매장 운영을 지원함',
+            '주어진 역할을 빠르게 익히고, 팀원들과 협업하며 일함',
           ],
-          skillKeywords: ['C', 'Linux', 'Kernel', 'Support', 'Research'],
-        },
-      ],
-    },
-    {
-      title: 'Open Source Community',
-      positions: [
-        {
-          title: 'System Advocate and Developer',
-          startedAt: '2010-06',
-          endedAt: '2018-01',
-          descriptions: [
-            'Promoted the use and development of Linux globally.',
-            'Developed automated scripts to streamline system configuration.',
-            'Facilitated live patching systems, reducing downtime.',
-          ],
-          skillKeywords: ['Open Source', 'Linux', 'AWS', 'RDBMS'],
+          skillKeywords: ['고객 응대', '팀워크', '적응력'],
         },
       ],
     },
