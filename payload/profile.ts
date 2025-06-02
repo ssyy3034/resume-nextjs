@@ -3,12 +3,11 @@ import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { IProfile } from '../component/profile/IProfile';
-import image from '../asset/sample_tux.png';
+import image from '../asset/psa2.jpeg';
 
 const profile: IProfile.Payload = {
   disable: false,
 
-  // image: 'https://resume.yowu.dev/static/image/profile_2019.png',
   image,
   name: {
     title: '권동하',
