@@ -1,5 +1,5 @@
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { IProfile } from '../component/profile/IProfile';
@@ -27,10 +27,6 @@ const profile: IProfile.Payload = {
     {
       link: 'https://github.com/ssyy3034',
       icon: faGithub,
-    },
-    {
-      link: 'https://velog.io/@ansqhrl3037/posts',
-      icon: faFacebook,
     },
   ],
   notice: {
