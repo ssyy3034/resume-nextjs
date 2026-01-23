@@ -1,19 +1,26 @@
 import { IEtc } from '../component/etc/IEtc';
 
 const etc: IEtc.Payload = {
-  disable: true,
+  disable: false,
 
   list: [
     {
-      title: 'Featured on SuperTuxKart',
-      subTitle: "Steve & Oliver Baker's",
-      startedAt: '2016-07',
+      title: 'Rise 캡스톤 디자인 경진대회',
+      subTitle: 'AI를 활용한 산모일기',
+      startedAt: '2025-03',
+      endedAt: '2025-06',
     },
     {
-      title: "Biting Linus Torvalds' Foot",
-      subTitle: 'Australia National Zoo & Aquarium',
-      startedAt: '1993-07',
-      endedAt: '1993-08',
+      title: '창의 융합 캡스톤 디자인 경진대회',
+      subTitle: '라즈베리 파이를 활용한 미니 게임기',
+      startedAt: '2024-09',
+      endedAt: '2025-01',
+    },
+    {
+      title: '전공 멘토링 우수상 수상',
+      subTitle: 'Java/HTML',
+      startedAt: '2020-09',
+      endedAt: '2020-01',
     },
   ],
 };

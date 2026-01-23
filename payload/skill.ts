@@ -3,110 +3,47 @@ import { ISkill } from '../component/skill/ISkill';
 const programmingLanguages: ISkill.Skill = {
   category: 'Programming Languages',
   items: [
-    {
-      title: 'Java',
-      level: 3,
-    },
-    {
-      title: 'Python',
-      level: 2,
-    },
-    {
-      title: 'JavaScript',
-      level: 2,
-    },
-    {
-      title: 'TypeScript',
-      level: 1,
-    },
-    {
-      title: 'HTML/CSS',
-    },
+    { title: 'Java' },
+    { title: 'Python' },
+    { title: 'JavaScript' },
+    { title: 'TypeScript' },
+    { title: 'HTML/CSS' },
   ],
 };
+
 const framework: ISkill.Skill = {
-  category: 'Frmework & Libraries',
+  category: 'Framework & Libraries',
   items: [
-    {
-      title: 'Spring Boot',
-      level: 3,
-    },
-    {
-      title: 'React.js',
-      level: 2,
-    },
+    { title: 'Spring Boot' },
+    { title: 'JPA / Hibernate' },
+    { title: 'Spring Security' },
+    { title: 'React.js' },
   ],
 };
 
-const Infrastructure: ISkill.Skill = {
-  category: 'Infrastructure & Datebases',
+const infrastructure: ISkill.Skill = {
+  category: 'Infrastructure & Databases',
   items: [
-    {
-      title: 'AWS',
-      level: 2,
-    },
-    {
-      title: 'MySQL',
-      level: 2,
-    },
-    {
-      title: 'Docker',
-    },
-    {
-      title: 'GitHub Actions',
-    },
-    {
-      title: 'Redis',
-    },
+    { title: 'AWS' },
+    { title: 'MySQL / MariaDB' },
+    { title: 'Docker' }, // 실무 사용 경험만 명시
   ],
 };
 
-const Tools: ISkill.Skill = {
-  category: 'Tools',
+const tools: ISkill.Skill = {
+  category: 'Tools & Monitoring',
   items: [
-    {
-      title: 'IntelliJ IDEA',
-    },
-    {
-      title: 'Eclipse',
-    },
-    {
-      title: 'Git',
-    },
-    {
-      title: 'GitHub',
-    },
-    {
-      title: 'Postman',
-    },
-    {
-      title: 'Prometheus',
-    },
-    {
-      title: 'Grafana',
-    },
-  ],
-};
-
-const misc: ISkill.Skill = {
-  category: 'Misc',
-  items: [
-    {
-      title: 'Coffee Brewing',
-    },
-    {
-      title: 'Singing',
-    },
-    {
-      title: 'Running',
-    },
+    { title: 'Git' },
+    { title: 'Swagger' },
+    { title: 'JUnit5' },
+    { title: 'IntelliJ IDEA' },
+    { title: 'Postman' },
   ],
 };
 
 const skill: ISkill.Payload = {
   disable: false,
-  skills: [programmingLanguages, framework, Infrastructure, Tools, misc],
-  tooltip: '1: 입문\n2: 기초\n3: 활용\n4: 숙련\n5: 전문',
+  skills: [programmingLanguages, framework, infrastructure, tools],
 };
 
 export default skill;

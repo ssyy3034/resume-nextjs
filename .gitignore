@@ -104,3 +104,10 @@ dist
 .tern-port
 
 .DS_Store
+.idea
+.agent/
+.agents/
+.claude/
+.codex/
+.gemini/
+
