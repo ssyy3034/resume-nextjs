@@ -25,45 +25,45 @@ function Yosume() {
         <title>{Payload._global.headTitle}</title>
         <link rel="shortcut icon" href={Payload._global.favicon} />
       </Head>
-      <Container style={Style.global}>
-        <div
+      <div
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '28px',
+          zIndex: 9999,
+        }}
+        className="no-print"
+      >
+        <a
+          href="https://www.ssyy3034.dev"
           style={{
-            position: 'fixed',
-            top: '20px',
-            right: '28px',
-            zIndex: 9999,
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '10px 24px',
+            backgroundColor: '#111',
+            color: '#fff',
+            borderRadius: '30px',
+            textDecoration: 'none',
+            fontWeight: '900',
+            fontSize: '14px',
+            letterSpacing: '-0.3px',
+            boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
-          className="no-print"
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+            e.currentTarget.style.backgroundColor = '#000';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+            e.currentTarget.style.backgroundColor = '#111';
+          }}
         >
-          <a
-            href="https://www.ssyy3034.dev"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '10px 24px',
-              backgroundColor: '#111',
-              color: '#fff',
-              borderRadius: '30px',
-              textDecoration: 'none',
-              fontWeight: '900',
-              fontSize: '14px',
-              letterSpacing: '-0.3px',
-              boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
-              e.currentTarget.style.backgroundColor = '#000';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.backgroundColor = '#111';
-            }}
-          >
-            ← Back to Portfolio
-          </a>
-        </div>
+          ← Back to Portfolio
+        </a>
+      </div>
+      <Container style={Style.global}>
         <Profile.Component payload={Payload.profile} />
         <Introduce.Component payload={Payload.introduce} />
         <Skill.Component payload={Payload.skill} />
