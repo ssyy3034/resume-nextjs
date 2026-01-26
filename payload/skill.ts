@@ -5,6 +5,7 @@ const languages: ISkill.Skill = {
   items: [
     { title: 'Java' },
     { title: 'TypeScript' },
+    { title: 'Python' },
     { title: 'C' },
     { title: 'JavaScript' },
     { title: 'HTML/CSS' },

@@ -7,7 +7,7 @@ const project: IProject.Payload = {
       title: 'StoLink : 지식 관리 및 시각화 플랫폼',
       startedAt: '2025-12',
       endedAt: '2026-01',
-      where: 'Team Project (**5인 개발 / Frontend Core Lead**)',
+      where: 'Team Project (**5인 개발 / Frontend**)',
       descriptions: [
         {
           content:
@@ -16,7 +16,7 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '기존 SVG 기반 노드 렌더링 방식의 성능 한계를 극복하기 위해 **Canvas(Three.js)** 엔진으로 마이그레이션했습니다. 이를 통해 650개 이상의 노드 환경에서도 프레임 드랍 없이 **60fps**의 안정적인 퍼포먼스를 확보하고, **CPU 사용량을 약 40% 절감**했습니다.',
+                '기존 SVG 기반 노드 렌더링 방식의 성능 한계를 극복하기 위해 **Canvas(Three.js)** 엔진으로 마이그레이션했습니다. 이를 통해 기존 50개 15fps에서 650개 이상의 노드 환경에서도 프레임 드랍 없이 **60fps**의 안정적인 퍼포먼스를 확보하고, **CPU 사용량을 약 40% 절감**하여 메인 스레드의 응답성을 확보했습니다.',
             },
             {
               content:
@@ -35,7 +35,7 @@ const project: IProject.Payload = {
             },
             {
               content:
-                '**TanStack Query(React Query)** 기반 서버 상태 관리로 데이터 패칭 구조를 효율화하고, 캐싱 전략 및 **Optimistic UI**를 적용하여 네트워크 레이턴시에 관계없이 즉각적인 사용자 피드백을 구현했습니다.',
+                '**TanStack Query(React Query)**의 캐싱 전략을 활용해 **중복 네트워크 요청을 제거**하고, **Optimistic UI**를 적용하여 서버 응답 대기 시간 없이 **즉각적인 편집 경험**을 제공했습니다.',
             },
           ],
         },
@@ -45,11 +45,15 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**Route-based Code Splitting**과 **Manual Chunking(Vite/Rollup)**을 적용하여 초기 로딩에 필요한 JS 번들 사이즈를 약 **40% 감축**하고, 초기 렌더링 속도(FCP)를 개선했습니다.',
+                '페이지별로 필요한 코드만 나누어 로드하는 **Code Splitting**과 라이브러리 별도 분리(**Manual Chunking**)를 통해 초기 로딩 시 다운로드 크기를 **약 40% 감축**했습니다. 이를 통해 첫 화면이 뜨는 속도(FCP)를 개선하여 사용자가 기다림 없이 서비스를 이용하게 했습니다.',
             },
             {
               content:
-                '**AI Agent 워크플로우**를 운영에 맞게 설계하여 코드 품질 검사 및 이슈 트래킹을 자동화했습니다. 이를 통해 팀의 운영 오버헤드를 줄이고 기능 구현에 집중할 수 있는 환경을 구축했습니다.',
+                '**Supervisor-Worker 모델** 기반의 **Multi-Agent 워크플로우**를 설계하여 운영 전반을 자동화했습니다. 작업 규모를 **T-shirt Sizing(S/M/L)**으로 분류하고 규모별로 **컨텍스트 주입 전략**을 최적화하여 응답 정확도를 높였습니다.',
+            },
+            {
+              content:
+                '**Smart-commit** 및 자동 PR 생성을 통해 반복적인 운영 오버헤드를 제거하고, 핵심 비즈니스 로직 구현에 집중할 수 있는 개발 환경을 구축했습니다.',
             },
           ],
         },
@@ -59,7 +63,7 @@ const project: IProject.Payload = {
       title: 'Pintos : 교육용 운영체제 커널 구현',
       startedAt: '2025-11',
       endedAt: '2025-12',
-      where: '크래프톤 정글 (**4인 개발 / Core Contributor**)',
+      where: '크래프톤 정글 (**3인 개발 / Core Contributor**)',
       descriptions: [
         {
           content: '**스레드 스케줄링 및 동기화** 메커니즘 구현',
@@ -71,21 +75,31 @@ const project: IProject.Payload = {
             },
             {
               content:
-                '**Priority Donation** 알고리즘을 구현하여 우선순위 역전(Priority Inversion) 문제를 해결하고, 중첩된 락 대기 상황(Nested Donation, depth 8)을 지원했습니다.',
+                '**Priority Donation** 알고리즘을 구현하여 **우선순위 역전(Priority Inversion)** 문제를 해결하고, 중첩된 락 대기 상황(Nested Donation, depth 8)을 지원했습니다.',
             },
           ],
         },
         {
-          content: '**가상 메모리 및 Demand Paging** 시스템 구축',
+          content: '**유저 프로그램 및 시스템 콜** 인터페이스 구축',
           weight: 'MEDIUM',
           descriptions: [
             {
               content:
-                '**Supplemental Page Table(SPT)**과 커스텀 **Page Fault Handler**를 구현하여 동적 메모리 할당 및 스택 확장을 지원했습니다.',
+                '유저 프로세스의 인자를 스택에 적재하는 **Argument Passing** 로직과 `fork`, `exec`, `wait` 등 핵심 **System Call**을 구현하여 커널과 유저 모드 간의 안정적인 상호작용을 설계했습니다.',
+            },
+          ],
+        },
+        {
+          content: '**가상 메모리 및 SPT** 시스템 고도화',
+          weight: 'MEDIUM',
+          descriptions: [
+            {
+              content:
+                '**Supplemental Page Table(SPT)**을 설계하여 가상 주소 매핑을 관리하고, 페이지 폴트 발생 시에만 실제 데이터를 물리 메모리에 적재하는 **Lazy Loading**을 구현했습니다.',
             },
             {
               content:
-                'x86 아키텍처 기반의 메모리 관리를 통해 **운영체제의 핵심 원리**를 이해하고, Low-level 시스템 프로그래밍 역량을 확보했습니다.',
+                '**Page Fault Handler**를 고도화하여 스택 공간 부족 시 메모리를 동적으로 할당하는 **Stack Growth**를 구현하고, x86 아키텍처 기반의 하드웨어 메모리 관리 원리를 깊게 이해했습니다.',
             },
           ],
         },
@@ -98,7 +112,7 @@ const project: IProject.Payload = {
       where: 'Capstone Design (**2인 개발 / Frontend & Backend Auth**)',
       descriptions: [
         {
-          content: '**React + TypeScript + Zustand** 기반의 고도화된 프론트엔드 아키텍처 구축',
+          content: '**React + TypeScript + Zustand** 기반의 프론트엔드 아키텍처 구축',
           weight: 'MEDIUM',
           descriptions: [
             {
