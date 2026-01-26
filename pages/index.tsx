@@ -28,36 +28,26 @@ function Yosume() {
       <div
         style={{
           position: 'fixed',
-          top: '20px',
-          right: '28px',
-          zIndex: 9999,
+          top: '30px',
+          right: '30px',
+          zIndex: 2147483647,
         }}
         className="no-print"
       >
         <a
           href="https://www.ssyy3034.dev"
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            padding: '10px 24px',
-            backgroundColor: '#111',
+            display: 'block',
+            padding: '12px 24px',
+            background: '#000',
             color: '#fff',
-            borderRadius: '30px',
+            borderRadius: '50px',
             textDecoration: 'none',
-            fontWeight: '900',
+            fontWeight: 'bold',
             fontSize: '14px',
-            letterSpacing: '-0.3px',
-            boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
-            e.currentTarget.style.backgroundColor = '#000';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-            e.currentTarget.style.backgroundColor = '#111';
+            boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+            border: '2px solid rgba(255,255,255,0.2)',
+            textAlign: 'center',
           }}
         >
           ← Back to Portfolio
