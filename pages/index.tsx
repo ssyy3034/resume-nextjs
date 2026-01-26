@@ -30,29 +30,38 @@ function Yosume() {
           style={{
             position: 'fixed',
             top: '20px',
-            right: '20px',
-            zIndex: 1000,
+            right: '28px',
+            zIndex: 9999,
           }}
           className="no-print"
         >
           <a
-            href="/"
+            href="https://www.ssyy3034.dev"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              padding: '10px 20px',
-              backgroundColor: '#333',
+              padding: '10px 24px',
+              backgroundColor: '#111',
               color: '#fff',
-              borderRadius: '25px',
+              borderRadius: '30px',
               textDecoration: 'none',
-              fontWeight: 'bold',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-              transition: 'transform 0.2s',
+              fontWeight: '900',
+              fontSize: '14px',
+              letterSpacing: '-0.3px',
+              boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
-            onMouseOver={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
-            onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+              e.currentTarget.style.backgroundColor = '#000';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              e.currentTarget.style.backgroundColor = '#111';
+            }}
           >
-            ← Portfolio
+            ← Back to Portfolio
           </a>
         </div>
         <Profile.Component payload={Payload.profile} />
