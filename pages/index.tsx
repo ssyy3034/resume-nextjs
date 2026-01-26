@@ -26,6 +26,35 @@ function Yosume() {
         <link rel="shortcut icon" href={Payload._global.favicon} />
       </Head>
       <Container style={Style.global}>
+        <div
+          style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            zIndex: 1000,
+          }}
+          className="no-print"
+        >
+          <a
+            href="/"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '10px 20px',
+              backgroundColor: '#333',
+              color: '#fff',
+              borderRadius: '25px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              transition: 'transform 0.2s',
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
+            onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+          >
+            ← Portfolio
+          </a>
+        </div>
         <Profile.Component payload={Payload.profile} />
         <Introduce.Component payload={Payload.introduce} />
         <Skill.Component payload={Payload.skill} />
