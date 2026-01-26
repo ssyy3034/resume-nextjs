@@ -3,8 +3,9 @@ import { PropsWithChildren } from 'react';
 import { DateTime } from 'luxon';
 import { Style } from '../common/Style';
 import Util from '../common/Util';
-import { IIntroduce } from './IIntroduce';
 import { PreProcessingComponent } from '../common/PreProcessingComponent';
+import { Markdown } from '../common/Markdown';
+import { IIntroduce } from './IIntroduce';
 
 type Payload = IIntroduce.Payload;
 
@@ -30,11 +31,17 @@ function Component({ payload }: PropsWithChildren<{ payload: Payload }>) {
     <div className="mt-5">
       <Row>
         <Col sm={12} md={3}>
-          <h2 style={Style.blue}>INTRODUCE</h2>
+          <h2 style={Style.blue}>자기소개</h2>
         </Col>
         <Col sm={12} md={9}>
           {payload.contents.map((content, index) => (
-            <p key={index.toString()}>{content}</p>
+            <p
+              // eslint-disable-next-line react/no-array-index-key
+              key={`intro-${index}-${content.substring(0, 10)}`}
+              style={index === 0 ? { fontSize: '1.2em' } : undefined}
+            >
+              {Markdown.parseBold(content)}
+            </p>
           ))}
           <p className="text-right">
             <small>Latest Updated</small>{' '}

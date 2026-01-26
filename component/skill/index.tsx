@@ -26,7 +26,7 @@ function Component({ payload }: PropsWithChildren<{ payload: Payload }>) {
         <Row className="pb-3">
           <Col>
             <h2>
-              <span style={Style.blue}>SKILL</span>
+              <span style={Style.blue}>기술 스택</span>
               {createTooltip(payload.tooltip)}
             </h2>
           </Col>

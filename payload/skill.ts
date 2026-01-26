@@ -1,49 +1,70 @@
 import { ISkill } from '../component/skill/ISkill';
 
-const programmingLanguages: ISkill.Skill = {
-  category: 'Programming Languages',
+const languages: ISkill.Skill = {
+  category: 'Languages',
   items: [
     { title: 'Java' },
-    { title: 'Python' },
-    { title: 'JavaScript' },
     { title: 'TypeScript' },
+    { title: 'C' },
+    { title: 'JavaScript' },
     { title: 'HTML/CSS' },
   ],
 };
 
-const framework: ISkill.Skill = {
-  category: 'Framework & Libraries',
+const frameworks: ISkill.Skill = {
+  category: 'Frameworks & Libraries',
   items: [
     { title: 'Spring Boot' },
-    { title: 'JPA / Hibernate' },
-    { title: 'Spring Security' },
+    { title: 'Node.js' },
     { title: 'React.js' },
+    { title: 'Next.js' },
+    { title: 'Tailwind CSS' },
+    { title: 'shadcn/ui' },
+    { title: 'Zustand' },
+    { title: 'TanStack Query' },
+    { title: 'Tiptap' },
+    { title: 'Vite' },
   ],
 };
 
 const infrastructure: ISkill.Skill = {
   category: 'Infrastructure & Databases',
   items: [
+    { title: 'PostgreSQL' },
+    { title: 'MySQL' },
+    { title: 'Redis' },
+    { title: 'Neo4j' },
+    { title: 'Docker' },
     { title: 'AWS' },
-    { title: 'MySQL / MariaDB' },
-    { title: 'Docker' }, // 실무 사용 경험만 명시
   ],
 };
 
 const tools: ISkill.Skill = {
-  category: 'Tools & Monitoring',
+  category: 'Tools & IDEs',
   items: [
     { title: 'Git' },
-    { title: 'Swagger' },
-    { title: 'JUnit5' },
+    { title: 'Github' },
+    { title: 'Antigravity' },
+    { title: 'Claude Code CLI' },
     { title: 'IntelliJ IDEA' },
-    { title: 'Postman' },
+    { title: 'VS Code' },
+    { title: 'Vim' },
+    { title: 'Eclipse' },
+  ],
+};
+
+const misc: ISkill.Skill = {
+  category: 'Misc',
+  items: [
+    { title: 'AI Agent & LLM Application' },
+    { title: 'Performance Optimization' },
+    { title: 'System Architecture' },
   ],
 };
 
 const skill: ISkill.Payload = {
   disable: false,
-  skills: [programmingLanguages, framework, infrastructure, tools],
+  skills: [languages, frameworks, infrastructure, tools, misc],
 };
 
 export default skill;

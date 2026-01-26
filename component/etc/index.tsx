@@ -22,7 +22,7 @@ export const Etc = {
 
 function Component({ payload }: PropsWithChildren<{ payload: Payload }>) {
   return (
-    <CommonSection title="Activities  ">
+    <CommonSection title="기타 활동">
       <EducationRow payload={payload} />
     </CommonSection>
   );

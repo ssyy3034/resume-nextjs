@@ -6,6 +6,8 @@ import { IExperience } from './IExperience';
 import { Style } from '../common/Style';
 import Util from '../common/Util';
 
+import { Markdown } from '../common/Markdown';
+
 type PositionWithDates = IExperience.Position & {
   startedAtDate: DateTime;
   endedAtDate: DateTime | null;
@@ -64,7 +66,7 @@ export default function ExperienceRow({
         </Col>
         <Col sm={12} md={9}>
           <h4 style={{ display: 'inline-flex', alignItems: 'center' }}>
-            {item.title}{' '}
+            {Markdown.parseBold(item.title)}{' '}
             <span style={{ fontSize: '65%', display: 'inline-flex', alignItems: 'center' }}>
               {isCurrentlyEmployed && (
                 <Badge color="primary" className="ml-1">
@@ -91,10 +93,10 @@ export default function ExperienceRow({
             )}
           </Col>
           <Col sm={12} md={9}>
-            <i style={Style.gray}>{position.title}</i>
+            <i style={Style.gray}>{Markdown.parseBold(position.title)}</i>
             <ul className="pt-2">
               {position.descriptions.map((description, descIndex) => (
-                <li key={descIndex.toString()}>{description}</li>
+                <li key={descIndex.toString()}>{Markdown.parseBold(description)}</li>
               ))}
               {createSkillKeywords(position.skillKeywords)}
             </ul>
@@ -145,7 +147,7 @@ function createSkillKeywords(skillKeywords?: string[]) {
             color="secondary"
             className="mr-1"
           >
-            {keyword}
+            {Markdown.parseBold(keyword)}
           </Badge>
         ))}
       </div>

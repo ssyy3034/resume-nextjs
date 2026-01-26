@@ -5,11 +5,6 @@ const education: IEducation.Payload = {
 
   list: [
     {
-      title: '연암공과대학교 전공 심화',
-      subTitle: '스마트소프트웨어학과 재학',
-      startedAt: '2025-03',
-    },
-    {
       title: '연암공과대학교',
       subTitle: '스마트소프트웨어학과 졸업',
       startedAt: '2017-03',

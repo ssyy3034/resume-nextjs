@@ -1,16 +1,16 @@
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faLink } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { IProfile } from '../component/profile/IProfile';
-import image from '../asset/psa2.jpeg';
+import image from '../asset/me.jpg';
 
 const profile: IProfile.Payload = {
   disable: false,
 
   image,
   name: {
-    title: '권동하',
+    title: 'Software Engineer',
     small: '',
   },
   contact: [
@@ -27,6 +27,10 @@ const profile: IProfile.Payload = {
     {
       link: 'https://github.com/ssyy3034',
       icon: faGithub,
+    },
+    {
+      link: 'https://velog.io/@ansqhrl3037/posts',
+      icon: faLink,
     },
   ],
   notice: {

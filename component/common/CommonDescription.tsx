@@ -3,6 +3,8 @@ import { CSSProperties, Fragment, PropsWithChildren } from 'react';
 import { HrefTargetBlank } from '.';
 import { IRow } from './IRow';
 
+import { Markdown } from './Markdown';
+
 /** Description Recusion Generator */
 export function CommonDescription({
   descriptions,
@@ -12,9 +14,9 @@ export function CommonDescription({
     <>
       {descriptions ? (
         <ul className={option?.padding ? 'pt-2' : ''}>
-          {descriptions.map((description, descIndex) => {
+          {descriptions.map((description) => {
             return (
-              <Fragment key={descIndex}>
+              <Fragment key={description.content}>
                 <Description description={description} />
                 {description.descriptions ? (
                   <DescriptionRecursion descriptions={description.descriptions} />
@@ -38,9 +40,9 @@ function DescriptionRecursion({
 }: PropsWithChildren<{ descriptions: IRow.Description[] }>) {
   return (
     <ul>
-      {descriptions.map((description, index) => {
+      {descriptions.map((description) => {
         return (
-          <Fragment key={index}>
+          <Fragment key={description.content}>
             <Description description={description} />
             {description.descriptions ? (
               <DescriptionRecursion descriptions={description.descriptions} />
@@ -57,52 +59,56 @@ function DescriptionRecursion({
 function Description({ description }: PropsWithChildren<{ description: IRow.Description }>) {
   const { content, href, postImage, postHref, weight } = description;
 
-  const component = (() => {
-    if (href && postImage) {
-      return (
-        <li style={getFontWeight(weight)}>
-          <HrefTargetBlank url={href} text={content} /> <img src={postImage} alt={postImage} />
-        </li>
-      );
-    }
-    if (href) {
-      return (
-        <li style={getFontWeight(weight)}>
-          <HrefTargetBlank url={href} text={content} />
-        </li>
-      );
-    }
-    if (postHref && postImage) {
-      return (
-        <li style={getFontWeight(weight)}>
-          {content} <HrefTargetBlank url={postHref} text={postHref} />{' '}
-          <img src={postImage} alt={postImage} />
-        </li>
-      );
-    }
-    if (postHref) {
-      return (
-        <li style={getFontWeight(weight)}>
-          {content} <HrefTargetBlank url={postHref} text={postHref} />
-        </li>
-      );
-    }
-    if (postImage) {
-      return (
-        <li style={getFontWeight(weight)}>
-          {content} <img src={postImage} alt={postImage} />
-        </li>
-      );
-    }
-    return (
-      <>
-        <meta name="format-detection" content="telephone=no" />
-        <li style={getFontWeight(weight)}>{content}</li>
-      </>
-    );
-  })();
+  const liStyle: CSSProperties = {
+    ...getFontWeight(weight),
+    letterSpacing: '-0.01em',
+    lineHeight: '1.8',
+    marginBottom: '0.4rem',
+  };
 
-  return component;
+  if (href && postImage) {
+    return (
+      <li style={liStyle}>
+        <HrefTargetBlank url={href} text={Markdown.parseBold(content)} />{' '}
+        <img src={postImage} alt={postImage} />
+      </li>
+    );
+  }
+  if (href) {
+    return (
+      <li style={liStyle}>
+        <HrefTargetBlank url={href} text={Markdown.parseBold(content)} />
+      </li>
+    );
+  }
+  if (postHref && postImage) {
+    return (
+      <li style={liStyle}>
+        {Markdown.parseBold(content)} <HrefTargetBlank url={postHref} text={postHref} />{' '}
+        <img src={postImage} alt={postImage} />
+      </li>
+    );
+  }
+  if (postHref) {
+    return (
+      <li style={liStyle}>
+        {Markdown.parseBold(content)} <HrefTargetBlank url={postHref} text={postHref} />
+      </li>
+    );
+  }
+  if (postImage) {
+    return (
+      <li style={liStyle}>
+        {Markdown.parseBold(content)} <img src={postImage} alt={postImage} />
+      </li>
+    );
+  }
+  return (
+    <Fragment key={content}>
+      <meta name="format-detection" content="telephone=no" />
+      <li style={liStyle}>{Markdown.parseBold(content)}</li>
+    </Fragment>
+  );
 }
 
 function getFontWeight(weight?: IRow.Description['weight']): CSSProperties {

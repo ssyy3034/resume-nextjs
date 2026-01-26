@@ -20,7 +20,7 @@ const etc: IEtc.Payload = {
       title: '전공 멘토링 우수상 수상',
       subTitle: 'Java/HTML',
       startedAt: '2020-09',
-      endedAt: '2020-01',
+      endedAt: '2020-12',
     },
   ],
 };

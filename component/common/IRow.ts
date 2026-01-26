@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export declare namespace IRow {
   export interface Payload {
     left: Left;
@@ -5,13 +7,13 @@ export declare namespace IRow {
   }
 
   export interface Left {
-    title: string;
-    subTitle?: JSX.Element;
+    title: string | ReactNode;
+    subTitle?: string | ReactNode;
   }
 
   export interface Right {
-    title?: string;
-    subTitle?: string;
+    title?: string | ReactNode;
+    subTitle?: string | ReactNode;
     descriptions?: Description[];
   }
 

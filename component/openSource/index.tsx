@@ -17,7 +17,7 @@ export const OpenSource = {
 
 function Component({ payload }: PropsWithChildren<{ payload: Payload }>) {
   return (
-    <CommonSection title="OPEN SOURCE">
+    <CommonSection title="오픈 소스">
       <OpenSourceRow payload={payload} />
     </CommonSection>
   );
