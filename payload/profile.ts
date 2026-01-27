@@ -10,7 +10,7 @@ const profile: IProfile.Payload = {
 
   image,
   name: {
-    title: 'Software Engineer',
+    title: '권동하',
     small: '',
   },
   contact: [

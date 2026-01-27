@@ -35,11 +35,7 @@ function Component({ payload }: PropsWithChildren<{ payload: Payload }>) {
         </Col>
         <Col sm={12} md={9}>
           {payload.contents.map((content, index) => (
-            <p
-              // eslint-disable-next-line react/no-array-index-key
-              key={`intro-${index}-${content.substring(0, 10)}`}
-              style={index === 0 ? { fontSize: '1.2em' } : undefined}
-            >
+            <p key={`intro-${index}-${content.substring(0, 10)}`} style={{ fontSize: '1.1em' }}>
               {Markdown.parseBold(content)}
             </p>
           ))}
