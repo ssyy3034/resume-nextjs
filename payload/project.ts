@@ -16,33 +16,33 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**Canvas(Three.js)를 도입해 600개 이상의 노드를 끊김 없이(60fps) 렌더링**하고, CPU 사용량을 40% 줄여 쾌적한 사용성을 확보했습니다.',
+                '**SVG 렌더링 시 15fps로 저하되는 성능 한계**를 극복하기 위해 **Canvas(Three.js)로 마이그레이션**하여, 600개 이상의 노드를 **끊김 없이(60fps) 렌더링**했습니다. 또한 GPU 가속을 통해 메인 스레드 부하를 줄여 **CPU 사용량을 40% 절감**했습니다.',
             },
             {
               content:
-                '**트리 연산 과정을 최적화(15ms → 0.1ms)**하여 사이드바 반응 속도를 높이고, 불필요한 재계산을 방지했습니다.',
+                '**사이드바 인터랙션 시 불필요한 재계산**으로 인한 지연을 제거하고자 **트리 연산 로직을 최적화(15ms → 0.1ms)**하고, **Memoization**을 적용해 반응 속도를 극대화했습니다.',
             },
             {
               content:
-                '**낙관적 업데이트(Optimistic UI)**를 적용해 서버 응답을 기다리지 않고도 **즉각적인 편집이 가능**하도록 만들었습니다.',
+                '**네트워크 지연**으로 인한 편집 반응성을 개선하기 위해 **낙관적 업데이트(Optimistic UI)**를 도입하여, 서버 응답 대기 없이 **즉각적으로 화면에 반영**되도록 만들었습니다.',
             },
           ],
         },
         {
-          content: '시스템 운영 효율성 극대화를 위한 DX(Developer Experience) 자동화 주도',
+          content: '비효율적인 협업 프로세스 개선을 위한 DX(Developer Experience) 자동화',
           weight: 'MEDIUM',
           descriptions: [
             {
               content:
-                '**코드 분할(Code Splitting)**과 라이브러리 최적화로 **초기 로딩 속도를 40% 개선**하여, 사용자가 기다림 없이 서비스를 이용하게 했습니다.',
+                '**초기 번들 크기로 인한 로딩 지연**을 해결하기 위해 **Code Splitting**과 **Manual Chunking**을 적용하여, 다운로드 크기와 TTi(Time to Interactive)를 **40% 이상 단축**했습니다.',
             },
             {
               content:
-                '기획부터 배포까지 **역할별 전문 에이전트(Multi-Agent)** 시스템을 구축하고, **품질 검수 과정을 자동화**해 개발 효율을 높였습니다.',
+                '**단일 모델의 복잡성 한계**를 극복하기 위해 **역할별 전문 에이전트(Multi-Agent)** 시스템을 구축하고, 수동 검수의 비효율을 없애고자 **7단계 품질 감사를 자동화**했습니다.',
             },
             {
               content:
-                '반복적인 운영 업무를 자동화(Smart-commit)하여 **핵심 로직 구현에만 집중할 수 있는 환경**을 만들었습니다.',
+                '**Git 버전에 익숙하지 않은 팀원들의 협업 어려움**을 해결하고자 **Smart-commit**을 도입하여, 복잡한 절차(이슈 연결, PR 생성)를 **단일 명령어로 자동화**했습니다.',
             },
           ],
         },
@@ -60,7 +60,11 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '불필요한 CPU 낭비를 막는 **Block/Wake 패턴**을 도입하고, **Priority Donation**을 구현해 스레드 우선순위 역전 문제를 해결했습니다.',
+                '**Busy Waiting으로 인한 CPU 낭비**를 막기 위해 **Wait Queue 기반의 Block/Wake 패턴**을 도입하여, 불필요한 문맥 교환과 전력 소모를 최소화했습니다.',
+            },
+            {
+              content:
+                '높은 우선순위 작업이 실행되지 못하는 **Priority Inversion(우선순위 역전)** 현상을 해결하고자 **Priority Donation** 알고리즘을 구현하여 스케줄링의 공정성을 확보했습니다.',
             },
           ],
         },
@@ -70,7 +74,7 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '유저 프로그램이 안전하게 실행되도록 **Argument Passing** 로직과 **System Call** 인터페이스를 설계하여 커널 안정성을 확보했습니다.',
+                '**잘못된 메모리 접근**으로부터 커널을 보호하기 위해 **Argument Passing** 로직과 안전한 **System Call 인터페이스**를 설계하여, 안정적인 시스템 운영을 보장했습니다.',
             },
           ],
         },
@@ -80,11 +84,11 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '메모리 효율을 위해 필요할 때만 데이터를 로드하는 **Lazy Loading**과 **가상 메모리 시스템(SPT)**을 완성했습니다.',
+                '**제한된 물리 메모리의 효율성**을 높이기 위해, 페이지 폴트 시에만 데이터를 로드하는 **Lazy Loading**과 **Supplemental Page Table**을 구축했습니다.',
             },
             {
               content:
-                '**GDB 디버깅**으로 복잡한 메모리 참조 오류(Widowed Frame)를 추적하여 해결하고, **Demand Paging**의 안정성을 높였습니다.',
+                '**메모리 해제 시 발생하는 고아 프레임(Widowed Frame)** 문제를 해결하기 위해 **GDB 디버깅**으로 원인을 추적하고, **Demand Paging** 안정성을 확보했습니다.',
             },
           ],
         },
@@ -102,11 +106,11 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '복잡한 비즈니스 로직을 **Custom Hooks**로 분리해 유지보수하기 쉬운 구조를 만들고, **Zustand**로 전역 상태 관리를 단순화했습니다.',
+                '**비즈니스 로직과 UI의 강한 결합**을 해결하기 위해 **Custom Hooks**로 로직을 분리(SoC)하여 유지보수성과 재사용성을 높였습니다.',
             },
             {
               content:
-                '**TailwindCSS**를 활용해 일관된 디자인 시스템(Glassmorphism)을 빠르게 구축하고 개발 생산성을 높였습니다.',
+                '**상태 관리의 복잡함**을 줄이고자 **Zustand**를 도입해 전역 상태 흐름을 단순화하고, **TailwindCSS**로 일관된 디자인 시스템을 빠르게 구축했습니다.',
             },
           ],
         },
@@ -116,11 +120,11 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**Spring Boot**(비즈니스)와 **Python Flask**(AI) 서버를 분리해 각각의 성능을 최적화하고, **JWT 기반 인증 시스템**을 연동했습니다.',
+                '**각 서비스의 특성에 맞는 성능 최적화**를 위해 **Spring Boot**(비즈니스)와 **Flask**(AI)로 서버를 분리하고, **JWT 인증**으로 보안을 강화했습니다.',
             },
             {
               content:
-                '얼굴 특징점 추출부터 **DALL-E 3** 이미지 생성까지 이어지는 **End-to-End AI 파이프라인**을 성공적으로 구축했습니다.',
+                '**사용자의 입력을 이미지로 변환**하는 과정의 지연을 최소화하기 위해 특징점 추출부터 생성까지 이어지는 **End-to-End AI 파이프라인**을 구축했습니다.',
             },
           ],
         },
