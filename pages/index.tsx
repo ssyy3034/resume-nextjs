@@ -6,7 +6,7 @@ import { NextSeo } from 'next-seo';
 import { Education } from '../component/education';
 import { Etc } from '../component/etc';
 import { Experience } from '../component/experience';
-import { Footer } from '../component/footer';
+
 import { Introduce } from '../component/introduce';
 import { OpenSource } from '../component/openSource';
 import { Presentation } from '../component/presentation';
