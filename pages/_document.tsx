@@ -93,6 +93,12 @@ export default class ResumeDocument extends Document {
                     print-color-adjust: exact !important;
                   }
 
+                  /* Force page break after Skill section */
+                  .skill-section {
+                    break-after: page;
+                    page-break-after: always;
+                  }
+
                   /* Refine Badges for print */
                   .badge {
                     border: 1px solid #ddd !important;
