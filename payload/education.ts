@@ -19,7 +19,7 @@ const education: IEducation.Payload = {
         },
         {
           content:
-            '나만무 프로젝트 웹소설 작가 지식 관리 플랫폼 **StoLink** 기획 및 프론트엔드 리드 개발',
+            '나만무 프로젝트 웹소설 작가 지식 관리 플랫폼 **StoLink** 기획 및 프론트엔드 개발',
         },
         {
           content: '매주 100시간 이상의 몰입 및 동료 학습을 통해 문제 해결 역량 내재화',
