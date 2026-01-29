@@ -44,7 +44,6 @@ function Resume({ payload }: { payload: any }) {
         <Presentation.Component payload={payload.presentation} />
         <Article.Component payload={payload.article} />
         <Etc.Component payload={payload.etc} />
-        <Footer.Component payload={payload.footer} />
       </Container>
     </>
   );
