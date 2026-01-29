@@ -32,44 +32,17 @@ function Resume({ payload }: { payload: any }) {
         <title>{payload._global.headTitle}</title>
         <link rel="shortcut icon" href={payload._global.favicon} />
       </Head>
-      <div
-        style={{
-          position: 'fixed',
-          top: '30px',
-          right: '30px',
-          zIndex: 2147483647,
-        }}
-        className="no-print"
-      >
-        <a
-          href="https://www.ssyy3034.dev"
-          style={{
-            display: 'block',
-            padding: '12px 24px',
-            background: '#000',
-            color: '#fff',
-            borderRadius: '50px',
-            textDecoration: 'none',
-            fontWeight: 'bold',
-            fontSize: '14px',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-            border: '2px solid rgba(255,255,255,0.2)',
-            textAlign: 'center',
-          }}
-        >
-          ← Back to Portfolio
-        </a>
-      </div>
+
       <Container style={Style.global}>
         <Profile.Component payload={payload.profile} />
         <Introduce.Component payload={payload.introduce} />
         <Skill.Component payload={payload.skill} />
-        <Experience.Component payload={payload.experience} />
         <Project.Component payload={payload.project} />
+        <Experience.Component payload={payload.experience} />
+        <Education.Component payload={payload.education} />
         <OpenSource.Component payload={payload.openSource} />
         <Presentation.Component payload={payload.presentation} />
         <Article.Component payload={payload.article} />
-        <Education.Component payload={payload.education} />
         <Etc.Component payload={payload.etc} />
         <Footer.Component payload={payload.footer} />
       </Container>
