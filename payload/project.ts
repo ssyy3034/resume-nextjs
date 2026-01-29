@@ -34,7 +34,7 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**초기 번들 크기로 인한 로딩 지연**을 해결하기 위해 **Code Splitting**과 **Manual Chunking**을 적용하여, 다운로드 크기와 TTi(Time to Interactive)를 **40% 이상 단축**했습니다.',
+                '**초기 번들 크기로 인한 로딩 지연**을 해결하기 위해 **Code Splitting**과 **Manual Chunking**을 적용하여, 다운로드 크기와 TTi(Time to Interactive)를 **60% 단축**했습니다.',
             },
             {
               content:
@@ -42,7 +42,7 @@ const project: IProject.Payload = {
             },
             {
               content:
-                '**Git 버전에 익숙하지 않은 팀원들의 협업 어려움**을 해결하고자 **Smart-commit**을 도입하여, 복잡한 절차(이슈 연결, PR 생성)를 **단일 명령어로 자동화**했습니다.',
+                '**Git 버전에 익숙하지 않은 팀원들의 협업 어려움**을 해결하고자 **Smart-commit 워크플로우**를 도입하여, 복잡한 절차(이슈 연결, PR 생성)를 **단일 명령어로 자동화**했습니다.',
             },
           ],
         },
@@ -106,7 +106,7 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**비즈니스 로직과 UI의 강한 결합**을 해결하기 위해 **Custom Hooks**로 로직을 분리(SoC)하여 유지보수성과 재사용성을 높였습니다.',
+                '**비즈니스 로직과 UI의 강한 결합**을 해결하기 위해 **Custom Hooks**로 로직을 분리하여 유지보수성과 재사용성을 높였습니다.',
             },
             {
               content:
