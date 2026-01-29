@@ -9,7 +9,7 @@ export const Footer = {
   Component,
 };
 
-function Component({ payload }: PropsWithChildren<{ payload: IFooter.Payload }>) {
+function Component() {
   return (
     <Row>
       <Col style={Style.footerCover}>
