@@ -1,6 +1,6 @@
 import { ISkill } from '../component/skill/ISkill';
 
-const languages: ISkill.Skill = {
+export const languages: ISkill.Skill = {
   category: 'Languages',
   items: [
     { title: 'Java' },
@@ -12,7 +12,7 @@ const languages: ISkill.Skill = {
   ],
 };
 
-const frameworks: ISkill.Skill = {
+export const frameworks: ISkill.Skill = {
   category: 'Frameworks & Libraries',
   items: [
     { title: 'Spring Boot' },
@@ -28,7 +28,7 @@ const frameworks: ISkill.Skill = {
   ],
 };
 
-const infrastructure: ISkill.Skill = {
+export const infrastructure: ISkill.Skill = {
   category: 'Infrastructure & Databases',
   items: [
     { title: 'PostgreSQL' },
@@ -40,7 +40,7 @@ const infrastructure: ISkill.Skill = {
   ],
 };
 
-const tools: ISkill.Skill = {
+export const tools: ISkill.Skill = {
   category: 'Tools & IDEs',
   items: [
     { title: 'Git' },
@@ -54,7 +54,7 @@ const tools: ISkill.Skill = {
   ],
 };
 
-const misc: ISkill.Skill = {
+export const misc: ISkill.Skill = {
   category: 'Misc',
   items: [
     { title: 'AI Agent & LLM Application' },
