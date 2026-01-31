@@ -17,9 +17,11 @@ import { Style } from '../component/common/Style';
 import { Article } from '../component/article';
 import defaultPayload from '../payload';
 import tossPayload from '../payload/versions/toss';
+import kraftonPayload from '../payload/versions/krafton';
 
 const PAYLOADS: Record<string, any> = {
   toss: tossPayload,
+  krafton: kraftonPayload,
 };
 
 function Resume({ payload }: { payload: any }) {
