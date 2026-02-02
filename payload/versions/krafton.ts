@@ -12,18 +12,19 @@ import { IFooter } from '../../component/footer/IFooter';
 import { IGlobal } from '../../component/common/IGlobal';
 
 import defaultPayload from '../index';
-import { languages, frameworks, infrastructure, tools, misc } from '../../payload/skill';
+import { languages, frameworks, infrastructure, tools } from '../../payload/skill';
 import image from '../../asset/me.jpg';
 
 const kraftonTools = {
   ...tools,
-  category: 'AI & Productivity Tools',
+  category: 'Productivity & Collaboration',
   items: [
-    { title: 'Claude Code' }, // Renaming for clarity if needed, or keeping as is but ensuring order
-    { title: 'Cursor' },
+    { title: 'Git' },
+    { title: 'Github' },
     { title: 'Antigravity' },
-    // Filter out duplicates if present in original tools, or just list the rest
-    ...tools.items.filter((item) => !['Claude Code CLI', 'Antigravity'].includes(item.title)),
+    ...tools.items.filter(
+      (item) => !['Git', 'Github', 'Antigravity', 'Claude Code CLI'].includes(item.title),
+    ),
   ],
 };
 
@@ -36,10 +37,12 @@ const kraftonPayload: Payload = {
   introduce: {
     ...defaultPayload.introduce,
     contents: [
-      '**"AI 도구를 동료처럼 활용하며, 비즈니스 가치를 기술로 실현하는 풀스택 프로덕트 엔지니어 권동하입니다."**',
-      '**"AI-Native: 개발 프로세스의 혁신"**\nClaude Code, Cursor 등 AI 도구를 단순 보조가 아닌 **페어 프로그래밍 파트너**로 활용하여 생산성을 극대화합니다. **StoLink** 프로젝트에서 팀의 반복적인 Git 작업을 자동화하는 워크플로우를 구축하고, AI 에이전트 파이프라인을 설계하여 **개발자 경험(DX)을 혁신**하고 팀의 효율을 높인 경험이 있습니다.',
-      '**"Fullstack & Product-Mind: \'왜\'를 고민하는 엔지니어"**\nReact/Next.js와 Node.js/Python을 넘나드는 **풀스택 역량**으로 서비스의 End-to-End를 책임집니다. 기술적 구현에 그치지 않고, **"어떤 기술이 사용자에게 가장 큰 가치를 주는가?"**를 끊임없이 고민합니다. **Aidiary**의 AI 솔루션부터 **StoLink**의 대규모 캔버스 최적화까지, 비즈니스 문제를 해결하기 위한 **최적의 아키텍처**를 설계합니다.',
-      '**"CS Fundamentals: 흔들리지 않는 기본기"**\n**크래프톤 정글** 과정을 통해 **Pintos 운영체제 커널**을 직접 구현하며, 스레드 스케줄링과 가상 메모리 등 컴퓨터 시스템의 핵심 원리를 깊이 있게 체득했습니다. 이러한 기본기를 바탕으로, 단순한 기능 구현을 넘어 **안정적이고 효율적인 시스템**을 구축합니다.',
+      `**"탄탄한 기본기를 토대로 문제를 해결하고, 팀의 생산성 향상에 기여하는 개발자 권동하입니다."**`,
+      `**Software Engineer**\n기본기가 탄탄한 개발자를 지향합니다. OS(Pintos) 구현 프로젝트를 통해 문제를 해결했던 끈기를 바탕으로 컴퓨터의 동작 원리를 깊이 있게 학습했고, 이 경험을 바탕으로 브라우저 렌더링 최적화나 효율적인 상태 관리 방법을 고민하고 있습니다. 단순히 기능만 구현하는 것이 아니라, 성능과 유지보수성까지 고려한 좋은 코드를 작성하기 위해 노력합니다.`,
+
+      `**Problem Solver**\n사용자에게는 최고의 경험을, 팀에게는 최적의 효율을 제공합니다. 렌더링 최적화로 사용자의 기다림을 없애고, 반복 업무 자동화로 동료의 소중한 시간을 지킨 경험이 있습니다. 기술 자체에 매몰되지 않고, 그 기술이 사용자와 팀에게 어떤 가치를 줄 수 있는지를 끊임없이 고민합니다.`,
+
+      `**Team Player**\n좋은 서비스는 개발자 혼자가 아닌, 팀 전체의 소통 속에서 만들어진다고 믿습니다. 3년간 서비스직 현장 리더로 일하며, 바쁜 시기에도 팀원 간의 의견을 조율하고 돌발 상황을 해결해 본 경험이 있습니다. 개발 현장에서도 동료와 적극적으로 소통하며, 사용자에게 더 나은 경험을 전달하려 합니다.`,
     ],
   },
   profile: {
@@ -48,7 +51,7 @@ const kraftonPayload: Payload = {
   },
   skill: {
     ...defaultPayload.skill,
-    skills: [languages, frameworks, infrastructure, kraftonTools, misc],
+    skills: [languages, frameworks, infrastructure, kraftonTools],
   },
 };
 
