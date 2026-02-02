@@ -35,7 +35,7 @@ export const frameworks: ISkill.Skill = {
     },
     {
       title: 'Spring Boot',
-      description: 'Layered Architecture 기반 REST API 설계 및 JPA Fetch Join 최적화 경험',
+      description: 'Layered Architecture 기반으로 API를 개발하며, JWT 인증/인가 구현 및 트랜잭션 처리, 예외 핸들링을 경험했습니다.',
     },
     {
       title: 'Next.js',
@@ -63,24 +63,22 @@ export const frameworks: ISkill.Skill = {
 export const infrastructure: ISkill.Skill = {
   category: 'Infrastructure & Databases',
   items: [
-    { title: 'PostgreSQL' },
-    { title: 'MySQL' },
-    { title: 'Neo4j' },
-    { title: 'Docker' },
-    { title: 'AWS' },
+    { title: 'PostgreSQL', description: 'JPA 연동 및 Fetch Join을 통한 N+1 쿼리 최적화 경험' },
+    { title: 'MySQL', description: '기본적인 CRUD 및 인덱스 설계 가능' },
+    { title: 'Neo4j', description: 'Cypher 쿼리를 활용한 그래프 데이터 조회 및 API 연동' },
+    { title: 'Docker', description: 'Docker Compose를 활용한 멀티 컨테이너 개발 환경 구축' },
+    { title: 'AWS', description: 'EC2, S3, CloudFront를 활용한 배포 및 CDN 설정 경험' },
   ],
 };
 
 export const tools: ISkill.Skill = {
   category: 'Tools & IDEs',
   items: [
-    { title: 'Git' },
-    { title: 'Github' },
-    { title: 'Antigravity' },
-    { title: 'Claude Code CLI' },
+    { title: 'Git', description: '브랜치 전략 및 협업 워크플로우 운영' },
+    { title: 'Github', description: 'PR 기반 코드 리뷰 및 Actions를 활용한 CI/CD 구축' },
+    { title: 'Claude Code CLI', description: 'Multi-Agent 워크플로우 설계 및 개발 자동화' },
     { title: 'IntelliJ IDEA' },
     { title: 'VS Code' },
-    { title: 'Eclipse' },
   ],
 };
 

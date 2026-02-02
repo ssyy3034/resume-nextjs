@@ -27,7 +27,7 @@ const project: IProject.Payload = {
             },
             {
               content:
-                '**Vite Code Splitting** 및 **Manual Chunking** 적용을 통한 초기 JS 번들 크기 **60% 절감(450KB → 187KB)** 및 로딩 성능 최적화',
+                '**Vite Code Splitting** 및 **Manual Chunking** 적용을 통한 초기 JS 번들 크기 **58% 절감(450KB → 187KB)** 및 로딩 성능 최적화',
             },
           ],
         },
@@ -74,11 +74,11 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**Custom Hooks 패턴 도입**: 비즈니스 로직과 UI를 분리하여 코드 재사용성 및 유지보수 편의성 제고',
+                '**Custom Hooks 패턴 도입**: 비즈니스 로직과 UI를 분리하여 코드 재사용성 및 유지보수 편의성 향상',
             },
             {
               content:
-                '**Zustand 기반 전역 상태 관리**: Prop Drilling 문제를 해결하고 일관된 데이터 흐름 설계',
+                '**Zustand 기반 전역 상태 관리**: Prop Drilling 문제를 해결, 일관된 데이터 흐름 구축',
             },
           ],
         },
@@ -88,14 +88,14 @@ const project: IProject.Payload = {
           descriptions: [
             {
               content:
-                '**서비스 분리 및 최적화**: Flask(AI 서빙)와 Spring Boot(비즈니스 로직)를 연동한 Polyglot 아키텍처 설계',
+                '**서비스 분리 및 최적화**: Flask(AI 서빙)와 Spring Boot(비즈니스 로직)를 분리하여 **30초 이상 소요되는 AI 연산의 메인 서버 블로킹 방지**',
             },
             {
               content:
-                '**AI 생성 파이프라인 구축**: AILabs API(얼굴 분석)와 DALL-E 3를 결합하여 일관된 스타일의 태아 이미지 생성 로직 구현',
+                '**AI 생성 파이프라인 구축**: AILabs API(얼굴 분석)와 DALL-E 3를 결합하여 **4단계 자동화 파이프라인**(얼굴 분석 → 특징 추출 → 프롬프트 생성 → 이미지 생성) 구현',
             },
             {
-              content: '**보안 강화**: JWT 기반의 인증 시스템 구축을 통한 데이터 접근 권한 관리',
+              content: '**보안**: JWT 기반의 인증/인가 및 Axios Interceptor를 통한 401 응답 시 자동 로그아웃 처리',
             },
           ],
         },
