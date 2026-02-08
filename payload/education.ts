@@ -28,7 +28,7 @@ const education: IEducation.Payload = {
     },
     {
       title: '연암공과대학교',
-      subTitle: '스마트소프트웨어학과 학사 졸업',
+      subTitle: '스마트소프트웨어학과 전문학사 졸업',
       startedAt: '2017-03',
       endedAt: '2025-02',
     },

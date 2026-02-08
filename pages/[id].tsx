@@ -18,10 +18,12 @@ import { Article } from '../component/article';
 import defaultPayload from '../payload';
 import tossPayload from '../payload/versions/toss';
 import kraftonPayload from '../payload/versions/krafton';
+import daangnPayload from '../payload/versions/daangn';
 
 const PAYLOADS: Record<string, any> = {
   toss: tossPayload,
   krafton: kraftonPayload,
+  daangn: daangnPayload,
 };
 
 function Resume({ payload }: { payload: any }) {
