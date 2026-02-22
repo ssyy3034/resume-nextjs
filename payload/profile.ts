@@ -28,13 +28,9 @@ const profile: IProfile.Payload = {
       link: 'https://github.com/ssyy3034',
       icon: faGithub,
     },
-    {
-      link: 'https://velog.io/@ansqhrl3037/posts',
-      icon: faLink,
-    },
   ],
   notice: {
-    title: '편한시간대에 언제든지 연락 주세요!',
+    title: '연락은 편한 시간에 부담 없이 주세요.',
     icon: faBell,
   },
 };
