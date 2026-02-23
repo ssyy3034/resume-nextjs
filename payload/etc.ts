@@ -5,8 +5,15 @@ const etc: IEtc.Payload = {
 
   list: [
     {
+      title: '크래프톤 정글 (Krafton Jungle) 11기',
+      subTitle:
+        '5개월간 주당 100시간 몰입 — 자료구조, 알고리즘, Pintos OS 커널 구현 등 단단한 CS 기초 학습',
+      startedAt: '2025-09',
+      endedAt: '2026-02',
+    },
+    {
       title: 'Rise 캡스톤 디자인 경진대회 참여',
-      subTitle: 'AI 기반 산모 감정 일기 "Aidiary" 기획 및 풀스택 개발 (FE/BE 인증 담당)',
+      subTitle: 'AI 기반 산모 감정 일기 "Aidiary" 기획 및 풀스택 개발',
       startedAt: '2025-03',
       endedAt: '2025-06',
     },
@@ -18,15 +25,9 @@ const etc: IEtc.Payload = {
     },
     {
       title: '전공 멘토링 활동 (Java/HTML)',
-      subTitle: '후배 대상 주간 학습 가이드 제공 및 실습 멘토링 수행을 통한 성적 향상 기여',
+      subTitle: '후배 대상 주간 학습 가이드 제공 및 실습 멘토링',
       startedAt: '2020-09',
       endedAt: '2020-12',
-    },
-    {
-      title: '정보처리기사 필기 합격',
-      subTitle: '한국산업인력공단',
-      startedAt: '2025-03',
-      endedAt: '2025-03',
     },
   ],
 };

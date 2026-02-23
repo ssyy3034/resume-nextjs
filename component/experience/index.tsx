@@ -55,7 +55,7 @@ function getFormattingExperienceTotalDuration(payload: IExperience.Payload) {
         ? DateTime.fromFormat(position.endedAt, Util.LUXON_DATE_FORMAT.YYYY_LL)
         : DateTime.local();
       const startedAt = DateTime.fromFormat(position.startedAt, Util.LUXON_DATE_FORMAT.YYYY_LL);
-      return endedAt.diff(startedAt);
+      return endedAt.plus({ month: 1 }).diff(startedAt);
     });
     return acc.concat(itemDurations); // 중첩된 배열 평탄화
   }, []);
