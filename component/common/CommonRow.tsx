@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { Row, Col } from 'reactstrap';
 import { IRow } from './IRow';
 import { Style } from './Style';
@@ -8,7 +8,8 @@ import { Markdown } from './Markdown';
 export function CommonRows({
   index,
   payload,
-}: PropsWithChildren<{ payload: IRow.Payload; index: number }>) {
+  extra,
+}: PropsWithChildren<{ payload: IRow.Payload; index: number; extra?: ReactNode }>) {
   const { left, right } = payload;
 
   const isNeedDescriptionPadding = !!(right.title || right.subTitle);
@@ -28,6 +29,7 @@ export function CommonRows({
         <Col sm={12} md={9}>
           {right.title ? <h4>{Markdown.parseBold(right.title)}</h4> : <></>}
           {right.subTitle ? <i style={Style.gray}>{Markdown.parseBold(right.subTitle)}</i> : <></>}
+          {extra ?? <></>}
           {right.descriptions ? (
             <CommonDescription
               descriptions={right.descriptions}

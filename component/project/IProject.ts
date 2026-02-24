@@ -14,12 +14,20 @@ export declare namespace IProject {
     list: Item[];
   }
 
+  export interface TechStack {
+    category: string;
+    items: string[];
+  }
+
   export interface Item {
     /** ### 프로젝트 제목 */
     title: string;
 
     /** ### 어디서 수행했는지 (or subtitle) */
     where: string;
+
+    /** ### 기술 스택 */
+    techStack?: TechStack[];
 
     /**
      * ### 프로젝트 시작일

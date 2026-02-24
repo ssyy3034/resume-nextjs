@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon';
-import { PropsWithChildren } from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
+import { Badge } from 'reactstrap';
 import { IProject } from './IProject';
 import { CommonRows } from '../common/CommonRow';
 import { IRow } from '../common/IRow';
@@ -10,9 +11,46 @@ export default function ProjectRow({ payload }: PropsWithChildren<{ payload: IPr
   return (
     <EmptyRowCol>
       {payload.list.map((item, index) => {
-        return <CommonRows key={index.toString()} payload={serialize(item)} index={index} />;
+        return (
+          <CommonRows
+            key={index.toString()}
+            payload={serialize(item)}
+            index={index}
+            extra={item.techStack ? <TechStackBadges techStack={item.techStack} /> : undefined}
+          />
+        );
       })}
     </EmptyRowCol>
+  );
+}
+
+function TechStackBadges({ techStack }: { techStack: IProject.TechStack[] }) {
+  const badgeStyle: CSSProperties = {
+    padding: '0.25rem 0.65rem',
+    fontSize: '0.8rem',
+    fontWeight: 500,
+    marginRight: '4px',
+    marginBottom: '4px',
+    backgroundColor: '#f8f9fa',
+    color: '#495057',
+    border: '1px solid #dee2e6',
+  };
+
+  return (
+    <div style={{ paddingTop: '0.5rem', paddingBottom: '0.25rem' }}>
+      {techStack.map(({ category, items }) => (
+        <div key={category} style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '4px' }}>
+          <span style={{ fontSize: '0.8rem', color: 'gray', marginRight: '6px', whiteSpace: 'nowrap' }}>
+            {category}
+          </span>
+          {items.map((item) => (
+            <Badge key={item} pill color="light" style={badgeStyle}>
+              {item}
+            </Badge>
+          ))}
+        </div>
+      ))}
+    </div>
   );
 }
 
