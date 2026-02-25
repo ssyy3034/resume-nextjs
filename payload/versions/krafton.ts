@@ -12,12 +12,12 @@ import { IFooter } from '../../component/footer/IFooter';
 import { IGlobal } from '../../component/common/IGlobal';
 
 import defaultPayload from '../index';
-import { languages, frameworks, infrastructure, tools } from '../../payload/skill';
+import { frontend, backend, infra, tools } from '../../payload/skill';
 import image from '../../asset/me.jpg';
 
 const kraftonTools = {
   ...tools,
-  category: 'Productivity & Collaboration',
+  category: 'Tools',
   items: [
     { title: 'Git' },
     { title: 'Github' },
@@ -51,7 +51,7 @@ const kraftonPayload: Payload = {
   },
   skill: {
     ...defaultPayload.skill,
-    skills: [languages, frameworks, infrastructure, kraftonTools],
+    skills: [frontend, backend, infra, kraftonTools],
   },
 };
 
