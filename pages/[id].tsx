@@ -19,11 +19,15 @@ import defaultPayload from '../payload';
 import tossPayload from '../payload/versions/toss';
 import kraftonPayload from '../payload/versions/krafton';
 import daangnPayload from '../payload/versions/daangn';
+import argoPayload from '../payload/versions/argo';
+import techtakaPayload from '../payload/versions/techtaka';
 
 const PAYLOADS: Record<string, any> = {
   toss: tossPayload,
   krafton: kraftonPayload,
   daangn: daangnPayload,
+  argo: argoPayload,
+  techtaka: techtakaPayload,
 };
 
 function Resume({ payload }: { payload: any }) {
