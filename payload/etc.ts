@@ -9,12 +9,12 @@ const etc: IEtc.Payload = {
       subTitle:
         '5개월간 주당 100시간 몰입 — 자료구조, 알고리즘, Pintos OS 커널 구현 등 단단한 CS 기초 학습',
       startedAt: '2025-09',
-      endedAt: '2026-02',
+      endedAt: '2026-01',
     },
     {
       title: 'Rise 캡스톤 디자인 경진대회 참여',
       subTitle: 'AI 기반 산모 감정 일기 "Aidiary" 기획 및 풀스택 개발',
-      startedAt: '2025-03',
+      startedAt: '2025-04',
       endedAt: '2025-06',
     },
     {

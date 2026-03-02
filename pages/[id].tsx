@@ -16,13 +16,19 @@ import { Skill } from '../component/skill';
 import { Style } from '../component/common/Style';
 import { Article } from '../component/article';
 import defaultPayload from '../payload';
-import tossPayload from '../payload/versions/toss';
-import kraftonPayload from '../payload/versions/krafton';
-import daangnPayload from '../payload/versions/daangn';
-import argoPayload from '../payload/versions/argo';
-import techtakaPayload from '../payload/versions/techtaka';
+import tossPayload from '../payload/versions/companies/toss';
+import kraftonPayload from '../payload/versions/companies/krafton';
+import daangnPayload from '../payload/versions/companies/daangn';
+import argoPayload from '../payload/versions/companies/argo';
+import techtakaPayload from '../payload/versions/companies/techtaka';
+import backendPayload from '../payload/versions/base/backend';
+import fullstackPayload from '../payload/versions/base/fullstack';
 
 const PAYLOADS: Record<string, any> = {
+  // base
+  backend: backendPayload,
+  fullstack: fullstackPayload,
+  // companies
   toss: tossPayload,
   krafton: kraftonPayload,
   daangn: daangnPayload,

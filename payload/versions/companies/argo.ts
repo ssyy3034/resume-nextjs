@@ -1,26 +1,26 @@
-import { IProfile } from '../../component/profile/IProfile';
-import { IIntroduce } from '../../component/introduce/IIntroduce';
-import { ISkill } from '../../component/skill/ISkill';
-import { IOpenSource } from '../../component/openSource/IOpenSource';
-import { IExperience } from '../../component/experience/IExperience';
-import { IProject } from '../../component/project/IProject';
-import { IPresentation } from '../../component/presentation/IPresentation';
-import { IEducation } from '../../component/education/IEducation';
-import { IArticle } from '../../component/article/IArticle';
-import { IEtc } from '../../component/etc/IEtc';
-import { IFooter } from '../../component/footer/IFooter';
-import { IGlobal } from '../../component/common/IGlobal';
+import { IProfile } from '../../../component/profile/IProfile';
+import { IIntroduce } from '../../../component/introduce/IIntroduce';
+import { ISkill } from '../../../component/skill/ISkill';
+import { IOpenSource } from '../../../component/openSource/IOpenSource';
+import { IExperience } from '../../../component/experience/IExperience';
+import { IProject } from '../../../component/project/IProject';
+import { IPresentation } from '../../../component/presentation/IPresentation';
+import { IEducation } from '../../../component/education/IEducation';
+import { IArticle } from '../../../component/article/IArticle';
+import { IEtc } from '../../../component/etc/IEtc';
+import { IFooter } from '../../../component/footer/IFooter';
+import { IGlobal } from '../../../component/common/IGlobal';
 
-import defaultPayload from '../index';
+import backendPayload from '../base/backend';
 
 const argoPayload: Payload = {
-  ...defaultPayload,
+  ...backendPayload,
   _global: {
-    ...defaultPayload._global,
+    ...backendPayload._global,
     headTitle: '권동하 - Argo 이력서',
   },
   introduce: {
-    ...defaultPayload.introduce,
+    ...backendPayload.introduce,
     contents: [
       '**서비스 설계부터 배포까지, 원인 단위로 문제를 해결하는 자바 백엔드 개발자 권동하입니다.**',
 

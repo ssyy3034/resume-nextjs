@@ -82,8 +82,9 @@ export const tools: ISkill.Skill = {
       description: '브랜치 전략, PR 기반 코드 리뷰, GitHub Actions CI/CD',
     },
     {
-      title: 'Claude Code CLI / Antigravity',
-      description: 'AI 기반 코드 에디터 및 Git 컨벤션 자동화 도구 활용',
+      title: 'AI Agents (Claude Code CLI / Antigravity)',
+      description:
+        'Claude Code CLI 커스텀 커맨드 antigravity 개발 및 Git 컨벤션 자동화 도구로 활용',
     },
   ],
 };

@@ -1,19 +1,19 @@
-import { IProfile } from '../../component/profile/IProfile';
-import { IIntroduce } from '../../component/introduce/IIntroduce';
-import { ISkill } from '../../component/skill/ISkill';
-import { IOpenSource } from '../../component/openSource/IOpenSource';
-import { IExperience } from '../../component/experience/IExperience';
-import { IProject } from '../../component/project/IProject';
-import { IPresentation } from '../../component/presentation/IPresentation';
-import { IEducation } from '../../component/education/IEducation';
-import { IArticle } from '../../component/article/IArticle';
-import { IEtc } from '../../component/etc/IEtc';
-import { IFooter } from '../../component/footer/IFooter';
-import { IGlobal } from '../../component/common/IGlobal';
+import { IProfile } from '../../../component/profile/IProfile';
+import { IIntroduce } from '../../../component/introduce/IIntroduce';
+import { ISkill } from '../../../component/skill/ISkill';
+import { IOpenSource } from '../../../component/openSource/IOpenSource';
+import { IExperience } from '../../../component/experience/IExperience';
+import { IProject } from '../../../component/project/IProject';
+import { IPresentation } from '../../../component/presentation/IPresentation';
+import { IEducation } from '../../../component/education/IEducation';
+import { IArticle } from '../../../component/article/IArticle';
+import { IEtc } from '../../../component/etc/IEtc';
+import { IFooter } from '../../../component/footer/IFooter';
+import { IGlobal } from '../../../component/common/IGlobal';
 
-import defaultPayload from '../index';
-import { frontend, backend, infra, tools } from '../../payload/skill';
-import image from '../../asset/me.jpg';
+import fullstackPayload from '../base/fullstack';
+import { frontend, backend, infra, tools } from '../../../payload/skill';
+import image from '../../../asset/me.jpg';
 
 const kraftonTools = {
   ...tools,
@@ -29,13 +29,13 @@ const kraftonTools = {
 };
 
 const kraftonPayload: Payload = {
-  ...defaultPayload,
+  ...fullstackPayload,
   _global: {
-    ...defaultPayload._global,
+    ...fullstackPayload._global,
     headTitle: '권동하 - Krafton 이력서',
   },
   introduce: {
-    ...defaultPayload.introduce,
+    ...fullstackPayload.introduce,
     contents: [
       `**"탄탄한 기본기를 토대로 문제를 해결하고, 팀의 생산성 향상에 기여하는 개발자 권동하입니다."**`,
       `**Software Engineer**\n기본기가 탄탄한 개발자를 지향합니다. OS(Pintos) 구현 프로젝트를 통해 컴퓨터의 동작 원리를 깊이 있게 학습했고, 이 경험을 바탕으로 브라우저 렌더링 최적화나 효율적인 상태 관리 방법을 고민하고 있습니다. 단순히 기능만 구현하는 것이 아니라, 성능과 유지보수성까지 고려한 좋은 코드를 작성하기 위해 노력합니다.`,
@@ -46,11 +46,11 @@ const kraftonPayload: Payload = {
     ],
   },
   profile: {
-    ...defaultPayload.profile,
+    ...fullstackPayload.profile,
     image,
   },
   skill: {
-    ...defaultPayload.skill,
+    ...fullstackPayload.skill,
     skills: [frontend, backend, infra, kraftonTools],
   },
 };
