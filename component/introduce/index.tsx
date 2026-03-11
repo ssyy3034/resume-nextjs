@@ -28,7 +28,7 @@ function Component({ payload }: PropsWithChildren<{ payload: Payload }>) {
   );
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 introduce-section">
       <Row>
         <Col sm={12} md={3}>
           <h2 style={Style.blue}>자기소개</h2>

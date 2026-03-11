@@ -11,40 +11,24 @@ import { IEtc } from '../../../component/etc/IEtc';
 import { IFooter } from '../../../component/footer/IFooter';
 import { IGlobal } from '../../../component/common/IGlobal';
 import fullstackPayload from '../base/fullstack';
-import { backend, frontend, infra, tools } from '../../skill';
+import { backend, frontend, database, tools } from '../../skill';
 
 // 스파르타 기술 스택(NestJS, TS 등)에 맞춘 스킬 커스터마이징
 const spartaBackend = {
   ...backend,
-  items: [
-    {
-      title: 'Node.js / Express',
-      description: '사이드 프로젝트 기반 REST API 구축 및 비동기 이벤트 루프 이해',
-    },
-    ...backend.items.map((item) => {
-      if (item.title === 'Spring Boot') {
-        return {
-          ...item,
-          description:
-            'Layered Architecture 중심의 REST API 개발 및 OOP 원리 체득 (이를 바탕으로 스파르타의 새로운 백엔드 환경에서도 기본기를 발휘하며 빠르게 학습하겠습니다)',
-        };
-      }
-      return item;
-    }),
-  ],
+  items: backend.items.map((item) => {
+    if (item.title === 'Spring Boot') {
+      return {
+        ...item,
+        description:
+          'Layered Architecture 중심의 REST API 개발 및 OOP 원리 체득 (이를 바탕으로 스파르타의 새로운 백엔드 환경에서도 기본기를 발휘하며 빠르게 학습하겠습니다)',
+      };
+    }
+    return item;
+  }),
 };
 
-const spartaFrontend = {
-  ...frontend,
-  items: [
-    ...frontend.items,
-    {
-      title: 'Next.js',
-      description:
-        'React 컴포넌트 생명주기와 렌더링 성능 최적화를 이해하고 있습니다. SSR/SSG 특성을 활용해 성능을 튜닝하고 Vercel 기반 배포 파이프라인 설계에 능숙합니다.',
-    },
-  ],
-};
+const spartaFrontend = frontend;
 
 const spartaPayload: Payload = {
   ...fullstackPayload,
@@ -55,7 +39,7 @@ const spartaPayload: Payload = {
   introduce: {
     ...fullstackPayload.introduce,
     contents: [
-      '**긍정적이고 성실하게 일하며, 기본기를 토대로 사용자의 문제를 해결하는 풀스택 엔지니어 권동하입니다.**',
+      '**기술에 다정함을 담아 옳은 방향으로 전달하는 풀스택 엔지니어 권동하입니다.**',
       '**기본기에 충실한 기술의 도입**\n탄탄한 기반이 있어야 새로운 기술도 제대로 활용할 수 있다고 생각합니다. 크래프톤 정글에서 5개월간의 몰입을 통해 자료구조,알고리즘,OS 커널(Pintos) 개발로 CS 지식을 다지고, Spring Boot를 통해 객체 지향과 백엔드 아키텍처를 학습했습니다. 동작 원리 기반의 학습을 통해 다른 기술도 빠르게 배워 적용할수 있습니다.',
 
       '**기술로 사용자의 불편을 해결**\n산모가 매번 기록을 남겨야 하는 불편을 덜고자 AI 감정 일기 서비스(Aidiary)를 개발했고, 웹소설 작가의 복잡한 세계관 관리 문제를 해결하기 위해 지식 관리 플랫폼(StoLink)을 기획했습니다. 사용자가 겪는 진짜 문제를 기술로 해결할 때 개발의 가치가 있다고 생각합니다.',
@@ -69,7 +53,7 @@ const spartaPayload: Payload = {
   },
   skill: {
     ...fullstackPayload.skill,
-    skills: [spartaFrontend, spartaBackend, infra, tools],
+    skills: [spartaFrontend, spartaBackend, database, tools],
   },
   project: {
     ...fullstackPayload.project,
@@ -126,6 +110,19 @@ const spartaPayload: Payload = {
                       content:
                         '트래픽 폭증 시 발생할 수 있는 크레딧 결제 장애(비즈니스 손실) 방지를 위해 비관적 락(동시성 제어)과 멱등키(중복 결제 방지) 로직 구성. Testcontainers 기반 통합 테스트로 **100개 스레드 환경에서도 잔액 정합성 100% 보장을 검증하여 안정적인 서비스 가용성 확보**',
                     },
+                    {
+                      content: '**N+1 쿼리 최적화**',
+                      descriptions: [
+                        {
+                          content:
+                            'JPA 쿼리 로그에서 문서 1건 조회 시 태그·카테고리 조회 쿼리가 N개 추가 발생함을 확인. @ManyToMany 기본값인 LAZY 로딩이 컬렉션 순회 시점마다 개별 쿼리를 유발하는 것이 원인',
+                        },
+                        {
+                          content:
+                            'Fetch Join으로 연관 데이터를 한 번의 쿼리에 함께 조회하도록 개선하여 **API 응답 450ms → 25ms (18배 개선)**',
+                        },
+                      ],
+                    },
                   ],
                 },
                 ...item.descriptions[2]!.descriptions!.slice(1),
@@ -167,7 +164,7 @@ const spartaPayload: Payload = {
                     },
                     {
                       content:
-                        '**[안정성/최적화] AI 챗봇 대화 이탈 방어 및 "오늘의 질문" 부하 분산**',
+                        '**[안정성/최적화] AI 챗봇 대화 이탈 방어 및 데일리 질문 부하 분산**',
                       descriptions: [
                         {
                           content:
@@ -175,7 +172,7 @@ const spartaPayload: Payload = {
                         },
                         {
                           content:
-                            '동시에, 모든 사용자가 동일하게 받는 "오늘의 질문" 데이터를 매번 새로 생성하는 비효율을 발견. 복잡한 배치 작업 대신, 매일 자정에 만료되는 Redis 내부 캐싱을 도입하여 **응답시간 487ms → 3ms 감소 및 트래픽 부하 분산**',
+                            '모든 사용자에게 공통으로 제공되는 데일리 질문 데이터가 매 요청마다 새롭게 생성되는 비효율을 파악하여, 매일 자정에 만료되는 Redis 내부 캐싱을 도입. 복잡한 배치 작업 없이 **응답 시간을 487ms에서 3ms로 단축하고 메인 서버의 트래픽 부하를 분산함**',
                         },
                       ],
                     },

@@ -21,6 +21,7 @@ import kraftonPayload from '../payload/versions/companies/krafton';
 import daangnPayload from '../payload/versions/companies/daangn';
 import argoPayload from '../payload/versions/companies/argo';
 import techtakaPayload from '../payload/versions/companies/techtaka';
+import spartaPayload from '../payload/versions/companies/sparta';
 import backendPayload from '../payload/versions/base/backend';
 import fullstackPayload from '../payload/versions/base/fullstack';
 
@@ -34,6 +35,7 @@ const PAYLOADS: Record<string, any> = {
   daangn: daangnPayload,
   argo: argoPayload,
   techtaka: techtakaPayload,
+  sparta: spartaPayload,
 };
 
 function Resume({ payload }: { payload: any }) {

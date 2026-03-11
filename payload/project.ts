@@ -11,7 +11,7 @@ const project: IProject.Payload = {
         '팀 프로젝트 (크래프톤 정글 최종 프로젝트 / 5인 개발 / 기획, 인증·결제 백엔드 + 에디터·관계도 프론트엔드)',
       techStack: [
         { category: 'Frontend', items: ['React', 'TypeScript', 'Canvas (D3.js)'] },
-        { category: 'Backend', items: ['Spring Boot', 'JPA (Hibernate)'] },
+        { category: 'Backend', items: ['Spring Boot', 'JPA (Hibernate)', 'Redis', 'RabbitMQ'] },
         { category: 'Database', items: ['PostgreSQL', 'Neo4j (Graph DB)'] },
         {
           category: 'Testing & Tools',
@@ -85,8 +85,39 @@ const project: IProject.Payload = {
               weight: 'BOLD',
               descriptions: [
                 {
-                  content:
-                    '순간적인 결제 트래픽 폭증이나 네트워크 지연에 따른 중복 요청 시 발생할 수 있는 부당한 크레딧 차감(사용자·비즈니스 금전 손실) 방지를 위해 동시성 제어(비관적 락) 및 재시도로 인한 중복 결제 방지(멱등키) 로직 등 오결제 방지 구성. Testcontainers를 활용해 **100개 스레드 동시 요청 환경에서 잔액 정합성 100% 보장을 수치로 검증**',
+                  content: '**크레딧 결제 로직 안정성 (동시성 제어 및 멱등키)**',
+                  descriptions: [
+                    {
+                      content:
+                        '순간적인 결제 트래픽 폭증이나 네트워크 지연에 따른 중복 요청 시 발생할 수 있는 부당한 크레딧 차감(사용자·비즈니스 금전 손실) 방지를 위해 동시성 제어(비관적 락) 및 재시도로 인한 중복 결제 방지(멱등키) 로직 등 오결제 방지 구성. Testcontainers를 활용해 **100개 스레 동시 요청 환경에서 잔액 정합성 100% 보장을 수치로 검증**',
+                    },
+                  ],
+                },
+                {
+                  content: '**N+1 쿼리 최적화**',
+                  descriptions: [
+                    {
+                      content:
+                        'JPA 쿼리 로그에서 문서 1건 조회 시 태그·카테고리 조회 쿼리가 N개 추가 발생함을 확인. 연관관계 구조를 분석한 결과, @ManyToMany 기본값인 LAZY 로딩이 컬렉션 순회 시점마다 개별 쿼리를 유발하는 것이 원인',
+                    },
+                    {
+                      content:
+                        'Fetch Join으로 연관 데이터를 한 번의 쿼리에 함께 조회하도록 개선하여 **API 응답 450ms → 25ms (18배 개선)**',
+                    },
+                  ],
+                },
+                {
+                  content: '**Cross-Domain 인프라 구축 및 보안 개선**',
+                  descriptions: [
+                    {
+                      content:
+                        'StoLink와 StoRead의 도메인 이원화로 인한 세션 공유 장애를 SameSite/Secure 쿠키 정책 수립 및 CloudFront 라우팅 최적화로 해결, 통합 인증(SSO) 환경을 구축함',
+                    },
+                    {
+                      content:
+                        '기존 JavaScript 접근이 가능한 방식의 토큰 노출 위험을 해결하기 위해 **Access/Refresh Token**을 **HttpOnly Cookie**에 저장하도록 변경하여 **XSS(Cross-Site Scripting) 공격 방어 체계** 확립',
+                    },
+                  ],
                 },
               ],
             },
@@ -139,7 +170,7 @@ const project: IProject.Payload = {
         '캡스톤 디자인 (2025.04 ~ 2025.06) → 수료 후 개인 개선 (2026.01 ~ 2026.02) / 2인 개발 (기획, 백엔드·인프라 중심 풀스택)',
       techStack: [
         { category: 'Frontend', items: ['React', 'TypeScript'] },
-        { category: 'Backend', items: ['Spring Boot', 'Flask'] },
+        { category: 'Backend', items: ['Spring Boot', 'Flask', 'Redis', 'RabbitMQ'] },
         {
           category: 'AI/ML',
           items: ['AI Agent & LLM (LangGraph, Gemini)', 'Vision & NLP (MediaPipe, XLM-R)'],
@@ -234,7 +265,7 @@ const project: IProject.Payload = {
                   ],
                 },
                 {
-                  content: '**[안정성/최적화] AI 챗봇 대화 이탈 방어 및 "오늘의 질문" 부하 분산**',
+                  content: '**[안정성/최적화] AI 챗봇 대화 이탈 방어 및 데일리 질문 부하 분산**',
                   descriptions: [
                     {
                       content:
@@ -242,7 +273,33 @@ const project: IProject.Payload = {
                     },
                     {
                       content:
-                        '동시에, 모든 사용자가 동일하게 받는 "오늘의 질문" 데이터를 매번 새로 생성하는 비효율을 발견. 복잡한 배치 작업 대신, 매일 자정에 만료되는 Redis 내부 캐싱을 도입하여 **응답시간 487ms → 3ms 감소 및 트래픽 부하 분산**',
+                        '모든 사용자에게 공통으로 제공되는 데일리 질문 데이터가 매 요청마다 새롭게 생성되는 비효율을 파악하여, 매일 자정에 만료되는 Redis 내부 캐싱을 도입. 복잡한 배치 작업 없이 **응답 시간을 487ms에서 3ms로 단축하고 메인 서버의 트래픽 부하를 분산함**',
+                    },
+                  ],
+                },
+                {
+                  content: '**@Data 순환 참조로 인한 서버 크래시 해결**',
+                  descriptions: [
+                    {
+                      content:
+                        '일기 조회 API 호출 시 Docker 서버가 반복적으로 크래시하는 문제 발생. 네트워크 탭 분석 결과, 단일 응답이 4GB 이상으로 확인',
+                    },
+                    {
+                      content:
+                        '원인 추적 결과 Lombok @Data가 모든 필드에 getter를 생성하고, Jackson이 이 getter를 순회하며 Diary → User → Child → User → ... 순환 직렬화를 일으키는 것이 원인',
+                    },
+                    {
+                      content:
+                        '@Data를 제거하고 필요한 어노테이션만 개별 적용. API 응답을 DiaryResponseDTO로 변환하여 엔티티 그래프가 직렬화 계층에 노출되지 않도록 차단. User ↔ Child 양방향 관계에 FetchType.LAZY를 명시하여 불필요한 로딩 방지. **응답 크기 4GB+ → 20KB로 정상화**',
+                    },
+                  ],
+                },
+                {
+                  content: '**배포 — Docker Compose + AWS**',
+                  descriptions: [
+                    {
+                      content:
+                        'AWS EC2에 Docker Compose로 4개 서비스를 배포. React 정적 리소스는 S3 + CloudFront로 분리하여 CDN 캐싱 적용. ALB로 Spring Boot / Flask 라우팅을 분기 처리하여 멀티 서버 구조 구성',
                     },
                   ],
                 },

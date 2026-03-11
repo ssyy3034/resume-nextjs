@@ -26,90 +26,93 @@ export default class ResumeDocument extends Document {
               __html: `
                 @media print {
                   @page {
-                    margin: 10mm 10mm;
+                    margin: 15mm 15mm;
                     size: A4;
                   }
 
-                  body {
+                  html, body {
+                    height: auto !important;
+                    overflow: visible !important;
                     margin: 0;
                     padding: 0;
-                    font-size: 10pt; /* Optimal for reading on paper */
-                    line-height: 1.5;
+                    font-size: 10pt;
+                    line-height: 1.2;
                   }
 
-                  /* Layout adjustments */
-                  .container {
-                    max-width: 100% !important;
-                    width: 100% !important;
-                    padding: 0 !important;
+                  /* Stronger Profile Image Scaling */
+                  .profile-image img, img.img-fluid {
+                    max-height: 150px !important;
+                    width: auto !important;
+                    margin-bottom: 5px !important;
                   }
 
-                  /* Reduce spacing to fit more content */
-                  .mt-5 {
-                    margin-top: 1.5rem !important;
+                  /* Reset all containers to allow natural break */
+                  .container, .row, [class*="col-"], div {
+                    height: auto !important;
+                    min-height: 0 !important;
+                    overflow: visible !important;
+                    break-inside: auto !important;
+                    page-break-inside: auto !important;
+                    display: block !important; /* Stack everything by default */
+                  }
+
+                  /* Side-by-side title/content layout using floats for stability */
+                  .col-md-3 {
+                    width: 22% !important;
+                    float: left !important;
+                    clear: left !important;
+                  }
+                  .col-md-9 {
+                    width: 78% !important;
+                    float: left !important;
+                  }
+
+                  /* Clear floats after each main section */
+                  .introduce-section, .skill-section, .mt-5 {
+                    clear: both !important;
+                    margin-top: 1rem !important;
+                    padding-top: 0.5rem !important;
                   }
 
                   .row.pb-3 {
-                    padding-bottom: 0.5rem !important;
+                    padding-bottom: 0 !important;
+                    margin-bottom: 0.5rem !important;
                   }
 
-                  /* Improved Page Breaking */
-                  /* Only prevent breaking inside specific logical units, not everywhere */
-                  section, article {
-                    break-inside: avoid;
-                    page-break-inside: avoid;
+                  .alert {
+                    display: block !important;
+                    padding: 0.3rem !important;
+                    margin-bottom: 0.5rem !important;
                   }
 
-                  /* Allow breaking long lists but keep list items together if possible */
                   li {
                     break-inside: avoid;
                   }
 
-                  /* Keep titles with their content */
-                  h2, h3, h4 {
+                  h1, h2, h3, h4 {
                     break-after: avoid;
                     page-break-after: avoid;
+                    margin-top: 0.8rem !important;
+                    margin-bottom: 0.3rem !important;
+                    line-height: 1.1 !important;
                   }
 
-                  /* Optimization for Grid System in Print */
-                  .row {
-                    display: flex;
-                    flex-wrap: wrap;
-                  }
-
-                  /* Adjust column widths for better space usage */
-                  .col-md-3 {
-                    flex: 0 0 18% !important;
-                    max-width: 18% !important;
-                  }
-                  .col-md-9 {
-                    flex: 0 0 82% !important;
-                    max-width: 82% !important;
-                  }
-
-                  /* Visual Improvements */
                   * {
                     -webkit-print-color-adjust: exact !important;
                     print-color-adjust: exact !important;
                   }
 
-                  /* Force page break after Skill section */
-                  .skill-section {
-                    break-after: page;
-                    page-break-after: always;
-                  }
-
-                  /* Refine Badges for print */
                   .badge {
                     border: 1px solid #ddd !important;
                     color: #333 !important;
                     background-color: transparent !important;
-                    padding: 2px 6px !important;
+                    padding: 1px 4px !important;
+                    font-size: 8pt !important;
                   }
 
-                  /* Remove shadows and other screen-only effects */
-                  .shadow, .shadow-sm, .shadow-lg {
-                    box-shadow: none !important;
+                  /* Hide scrollbars and UI elements in print if any */
+                  ::-webkit-scrollbar {
+                    display: none;
                   }
                 }
               `,
