@@ -24,6 +24,13 @@ const etc: IEtc.Payload = {
       endedAt: '2025-01',
     },
     {
+      title: '맥도날드 팀 리더 (아르바이트)',
+      subTitle:
+        '시프트 단위 최대 20명 운영 — 병목 판단·인력 재배치, 현장 이슈 중재, 신규 크루 교육',
+      startedAt: '2022-11',
+      endedAt: '2025-09',
+    },
+    {
       title: '전공 멘토링 활동 (Java/HTML)',
       subTitle: '후배 대상 주간 학습 가이드 제공 및 실습 멘토링',
       startedAt: '2020-09',

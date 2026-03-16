@@ -14,7 +14,7 @@ export default function SkillRow({
     <div className={index > 0 ? 'mt-4' : ''}>
       <Row>
         <Col sm={12} md={3} className="text-md-right border-right-md">
-          <h4 style={{ ...Style.gray, fontSize: '1.1rem', fontWeight: 600 }}>{skill.category}</h4>
+          <h4 style={{ ...Style.gray, fontSize: '1.25rem', fontWeight: 600 }}>{skill.category}</h4>
         </Col>
         <Col sm={12} md={9}>
           <div className="d-flex flex-wrap gap-2" style={{ gap: '8px' }}>
@@ -34,8 +34,8 @@ function SkillBadge({ item }: { item: ISkill.Item }) {
       pill
       color="light"
       style={{
-        padding: '0.4rem 0.8rem',
-        fontSize: '0.9rem',
+        padding: '0.5rem 0.9rem',
+        fontSize: '1.15rem',
         fontWeight: 500,
         marginBottom: '4px',
         marginRight: '4px',

@@ -39,8 +39,13 @@ function TechStackBadges({ techStack }: { techStack: IProject.TechStack[] }) {
   return (
     <div style={{ paddingTop: '0.5rem', paddingBottom: '0.25rem' }}>
       {techStack.map(({ category, items }) => (
-        <div key={category} style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '4px' }}>
-          <span style={{ fontSize: '0.8rem', color: 'gray', marginRight: '6px', whiteSpace: 'nowrap' }}>
+        <div
+          key={category}
+          style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '4px' }}
+        >
+          <span
+            style={{ fontSize: '0.8rem', color: 'gray', marginRight: '6px', whiteSpace: 'nowrap' }}
+          >
             {category}
           </span>
           {items.map((item) => (

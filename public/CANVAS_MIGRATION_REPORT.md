@@ -11,7 +11,7 @@
 StoLink의 핵심 기능인 소설 인물 관계도는 D3.js 기반 SVG로 구현되어 있었습니다. 노드가 50개만 넘어도 클릭 및 드래그 응답이 **420ms**까지 느려지는 문제가 발생했습니다. DevTools Performance 탭으로 분석한 결과, **Style Recalculation**이 병목임을 확인했습니다.
 
 - 노드가 많아질수록 화면 반응 속도가 현저히 느려짐 (FPS 10 미만)
-- **원인**: 브라우저가 수백 개의 SVG DOM 요소를 매 프레임마다 재배치(Reflow)하는 과정에서 부하 발생
+- **원인**: 매 프레임마다 수백 개 SVG DOM 요소의 스타일 재계산(Style Recalculation) → 레이아웃 재배치(Reflow) → 다시 그리기(Paint)가 연쇄적으로 발생하며 메인 스레드를 블로킹
 
 ### 해결 과정
 
@@ -33,6 +33,9 @@ const graphData = useMemo(
 // 2. 실시간 위치 정보는 Ref로 참조
 // 매초 수십 번 변하는 좌표 때문에 화면 전체를 다시 그리지 않도록, useRef로 데이터만 참조합니다.
 const graphDataRef = useRef(graphData);
+useEffect(() => {
+  graphDataRef.current = graphData;
+}, [graphData]);
 
 // 3. 라이브러리 내부 엔진 제어하기
 // D3.js 관계 그래프 구현 사례를 참고하여 물리 시뮬레이션을 커스텀 했습니다.

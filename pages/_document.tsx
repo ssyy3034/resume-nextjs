@@ -36,7 +36,7 @@ export default class ResumeDocument extends Document {
                     margin: 0;
                     padding: 0;
                     font-size: 10pt;
-                    line-height: 1.2;
+                    line-height: 1.6 !important;
                   }
 
                   /* Stronger Profile Image Scaling */
@@ -46,32 +46,33 @@ export default class ResumeDocument extends Document {
                     margin-bottom: 5px !important;
                   }
 
-                  /* Reset all containers to allow natural break */
+                  /* Reset all containers to allow natural break and maintain stability */
                   .container, .row, [class*="col-"], div {
                     height: auto !important;
                     min-height: 0 !important;
                     overflow: visible !important;
-                    break-inside: auto !important;
-                    page-break-inside: auto !important;
-                    display: block !important; /* Stack everything by default */
+                    display: block !important;
                   }
 
                   /* Side-by-side title/content layout using floats for stability */
                   .col-md-3 {
-                    width: 22% !important;
+                    width: 25% !important;
                     float: left !important;
                     clear: left !important;
                   }
                   .col-md-9 {
-                    width: 78% !important;
+                    width: 75% !important;
                     float: left !important;
                   }
 
-                  /* Clear floats after each main section */
-                  .introduce-section, .skill-section, .mt-5 {
+                  /* Clear floats after each main section and prevent splitting */
+                  .introduce-section, .skill-section, .common-row-container, .mt-5 {
                     clear: both !important;
                     margin-top: 1rem !important;
                     padding-top: 0.5rem !important;
+                    break-inside: avoid !important;
+                    page-break-inside: avoid !important;
+                    display: block !important;
                   }
 
                   .row.pb-3 {
@@ -83,18 +84,20 @@ export default class ResumeDocument extends Document {
                     display: block !important;
                     padding: 0.3rem !important;
                     margin-bottom: 0.5rem !important;
+                    break-inside: avoid !important;
                   }
 
-                  li {
-                    break-inside: avoid;
+                  li, p {
+                    break-inside: avoid !important;
+                    page-break-inside: avoid !important;
                   }
 
                   h1, h2, h3, h4 {
-                    break-after: avoid;
-                    page-break-after: avoid;
+                    break-after: avoid !important;
+                    page-break-after: avoid !important;
                     margin-top: 0.8rem !important;
                     margin-bottom: 0.3rem !important;
-                    line-height: 1.1 !important;
+                    line-height: 1.2 !important;
                   }
 
                   * {

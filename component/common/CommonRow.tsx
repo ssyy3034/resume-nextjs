@@ -15,7 +15,7 @@ export function CommonRows({
   const isNeedDescriptionPadding = !!(right.title || right.subTitle);
 
   return (
-    <div style={{ paddingBottom: '1.5rem', marginBottom: '1rem' }}>
+    <div className="common-row-container" style={{ paddingBottom: '1.5rem', marginBottom: '1rem' }}>
       {index > 0 ? <hr style={{ marginBottom: '2.5rem' }} /> : ''}
       <Row>
         <Col sm={12} md={3} className="text-md-right">

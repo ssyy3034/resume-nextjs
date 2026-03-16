@@ -12,7 +12,7 @@ import { IFooter } from '../../../component/footer/IFooter';
 import { IGlobal } from '../../../component/common/IGlobal';
 
 import fullstackPayload from '../base/fullstack';
-import { frontend, backend, database, tools } from '../../../payload/skill';
+import { frontend, backend, database, tools } from '../../skill';
 import image from '../../../asset/me.jpg';
 
 const kraftonTools = {

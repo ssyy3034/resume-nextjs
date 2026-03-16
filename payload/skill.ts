@@ -61,6 +61,11 @@ export const backend: ISkill.Skill = {
       description: '날짜 키 기반 TTL 캐싱으로 API 호출 비용 절감 및 다층 캐시 구성.',
     },
     {
+      title: 'NestJS',
+      description:
+        '모듈·DI·인터셉터·가드를 활용해 챗봇 백엔드를 설계하고, MongoDB 연동 API를 구현했습니다.',
+    },
+    {
       title: 'Node.js',
       description: '비동기 이벤트 루프 기반의 서버 환경 이해.',
     },

@@ -89,7 +89,11 @@ const project: IProject.Payload = {
                   descriptions: [
                     {
                       content:
-                        '순간적인 결제 트래픽 폭증이나 네트워크 지연에 따른 중복 요청 시 발생할 수 있는 부당한 크레딧 차감(사용자·비즈니스 금전 손실) 방지를 위해 동시성 제어(비관적 락) 및 재시도로 인한 중복 결제 방지(멱등키) 로직 등 오결제 방지 구성. Testcontainers를 활용해 **100개 스레 동시 요청 환경에서 잔액 정합성 100% 보장을 수치로 검증**',
+                        '외부 PG(토스페이먼츠) API 응답 지연 시 DB 트랜잭션이 길어져 커넥션 풀이 고갈될 수 있는 구조를 인지하고, 외부 호출을 트랜잭션 밖으로 분리하여 커넥션 점유 시간을 줄임',
+                    },
+                    {
+                      content:
+                        '동시 결제 요청 시 잔액 부정합 방지를 위해 비관적 락, 네트워크 재시도에 의한 중복 결제 방지를 위해 멱등키 적용. Testcontainers 기반 통합 테스트로 **100개 스레드 동시 요청에서 잔액 정합성 100% 검증**',
                     },
                   ],
                 },
@@ -111,7 +115,7 @@ const project: IProject.Payload = {
                   descriptions: [
                     {
                       content:
-                        'StoLink와 StoRead의 도메인 이원화로 인한 세션 공유 장애를 SameSite/Secure 쿠키 정책 수립 및 CloudFront 라우팅 최적화로 해결, 통합 인증(SSO) 환경을 구축함',
+                        'StoLink와 StoRead의 도메인 이원화로 인한 쿠키 공유 장애를 SameSite/Secure 쿠키 정책 수립 및 CloudFront 라우팅 최적화로 해결, OAuth2 기반 통합 인증 환경을 구축함',
                     },
                     {
                       content:
@@ -126,16 +130,15 @@ const project: IProject.Payload = {
               weight: 'BOLD',
               descriptions: [
                 {
-                  content:
-                    '**[렌더링 최적화] 브라우저 파이프라인 이해를 바탕으로 한 Canvas 대규모 렌더링**',
+                  content: '**[렌더링 최적화] SVG → Canvas 전환으로 관계도 렌더링 병목 해소**',
                   descriptions: [
                     {
                       content:
-                        'SVG 기반 관계도 렌더링 시 대규모 노드에서 발생하는 스타일 재계산 병목 현상 파악',
+                        'SVG 기반 관계도는 노드·엣지 각각이 DOM 요소로 존재하여, 노드가 늘어날수록 Layout 비용이 비례 증가하는 구조적 한계를 확인',
                     },
                     {
                       content:
-                        '이를 해결하고자 브라우저 렌더링 파이프라인 부담이 적은 Canvas API로 전면 전환하여 **INP 420ms → 64ms 단축 및 650+ 노드 환경에서 60FPS의 부드러운 인터랙션 유지**',
+                        'Canvas API로 전환하여 렌더링을 단일 비트맵 레이어로 처리하고 DOM 비례 레이아웃 비용을 제거. **INP 420ms → 64ms, 650+ 노드 환경에서 60FPS 유지**',
                     },
                   ],
                 },
@@ -176,10 +179,7 @@ const project: IProject.Payload = {
           items: ['AI Agent & LLM (LangGraph, Gemini)', 'Vision & NLP (MediaPipe, XLM-R)'],
         },
         { category: 'Database', items: ['MariaDB'] },
-        {
-          category: 'Infra',
-          items: ['AWS (EC2, S3, CloudFront)', 'Messaging (RabbitMQ, Redis)', 'Docker Compose'],
-        },
+        { category: 'Infra', items: ['AWS (EC2, S3, CloudFront)', 'Docker Compose'] },
       ],
       descriptions: [
         {
@@ -247,33 +247,32 @@ const project: IProject.Payload = {
               weight: 'BOLD',
               descriptions: [
                 {
-                  content:
-                    '**[아키텍처/성능] 병목 연산 격리를 통한 대규모 트래픽 수용 및 장애 방지**',
+                  content: '**[성능] AI 이미지 합성 동기 호출로 인한 서버 장애 해결**',
                   descriptions: [
                     {
                       content:
-                        '초기에는 빠른 기능 검증을 위해 단일 배포 구조로 개발했으나, 이미지 합성(~30초) 동기 처리로 인한 톰캣 스레드 고갈 장애를 예측 및 발견',
+                        'k6 부하 테스트에서 동시 사용자 10~20명만으로 서비스 전체 마비 확인. 원인은 Flask ML 추론(~30초)을 Tomcat 스레드가 동기 대기하면서 스레드 풀이 고갈되는 구조 (실측 **1.16 TPS**)',
                     },
                     {
                       content:
-                        '이를 해결하기 위해 무거운 딥러닝 추론 로직을 전략 패턴 기반의 설계와 RabbitMQ 비동기 워커 아키텍처로 분리하고, 경량 감정 분석 모델은 워커에 직접 배포하여 외부 API 통신 지연을 최소화',
+                        '메인 서버는 요청만 받고 즉시 응답(202)하도록 하고, 무거운 ML 연산은 RabbitMQ를 통해 별도 Python Worker가 처리하도록 분리. 가장 적은 변경으로 병목을 격리하는 방향을 선택',
                     },
                     {
                       content:
-                        '결과적으로 무거운 연산을 메인 서버에서 완벽히 격리하여, **500명 동시 접속 부하 테스트 환경에서 에러율 0% 유지 및 최대 1,949 TPS를 확보**',
+                        '**TPS 1.16 → 1,949 (1,680배), 응답 레이턴시 30,000ms → 4.9ms, 500 VU 부하에서 에러율 0%**',
                     },
                   ],
                 },
                 {
-                  content: '**[안정성/최적화] AI 챗봇 대화 이탈 방어 및 데일리 질문 부하 분산**',
+                  content: '**[안정성] AI 챗봇 대화 이탈 방어 및 API 호출 비용 절감**',
                   descriptions: [
                     {
                       content:
-                        '아이 챗봇의 AI 환각 현상과 대화 이탈 위험을 LangGraph 연쇄 노드 기반 대화 제어와 3중 가드레일(의미 검색 강제, 시스템 프롬프트, 입력 검증)로 방어하여 응답 신뢰성 확보',
+                        '아이 챗봇에서 AI 환각으로 부적절한 응답이 생성되는 문제를 LangGraph 노드 기반 대화 제어와 3중 가드레일(의미 검색 강제, 시스템 프롬프트, 입력 검증)로 방어',
                     },
                     {
                       content:
-                        '모든 사용자에게 공통으로 제공되는 데일리 질문 데이터가 매 요청마다 새롭게 생성되는 비효율을 파악하여, 매일 자정에 만료되는 Redis 내부 캐싱을 도입. 복잡한 배치 작업 없이 **응답 시간을 487ms에서 3ms로 단축하고 메인 서버의 트래픽 부하를 분산함**',
+                        '데일리 질문이 매 요청마다 Gemini API를 호출하는 비효율을 파악. 자정 TTL 기반 Redis 캐싱을 적용하여 **응답 시간 487ms → 3ms (162배), API 호출 N회 → 일 1회 고정**',
                     },
                   ],
                 },
@@ -325,6 +324,64 @@ const project: IProject.Payload = {
                         '결과적으로 메인 스레드 점유율을 크게 낮춰, **로딩 애니메이션이 끊기지 않는 쾌적한 모바일 사용자 경험 제공**',
                     },
                   ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Knowledge Garden : 포트폴리오 사이트',
+      startedAt: '2026-02',
+      where: '개인 프로젝트',
+      techStack: [
+        { category: 'Backend', items: ['NestJS', 'MongoDB', 'OpenAI API'] },
+        { category: 'Frontend', items: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
+        { category: 'Infra', items: ['Docker', 'Vercel'] },
+      ],
+      descriptions: [
+        {
+          content:
+            'NestJS 기반 포트폴리오 백엔드와 Next.js 프론트엔드를 개발했습니다. RAG 챗봇, 가드레일 필터링, 분석 파이프라인을 모듈 단위로 설계했습니다.',
+        },
+        {
+          content: '**담당 구현**',
+          weight: 'BOLD',
+          descriptions: [
+            {
+              content: '**Backend**',
+              weight: 'BOLD',
+              descriptions: [
+                {
+                  content:
+                    'NestJS 모듈 아키텍처로 Chat, AI, Analytics, Resume 4개 도메인을 분리하고 DI로 의존성 관리',
+                },
+                {
+                  content:
+                    'MongoDB 가중치 텍스트 인덱스(title 10x, summary 5x, content 1x) 기반 RAG로 이력서 데이터를 검색하고, LLM 컨텍스트에 주입',
+                },
+                {
+                  content:
+                    'LLM 가드레일 분류기로 포트폴리오 무관 질문을 사전 필터링하고, 450줄 이상의 시스템 프롬프트로 응답 품질 관리',
+                },
+                {
+                  content:
+                    '인터셉터 기반 분석 로깅(토큰·응답 시간)과 MongoDB TTL 인덱스로 90일 자동 정리',
+                },
+              ],
+            },
+            {
+              content: '**Frontend**',
+              weight: 'BOLD',
+              descriptions: [
+                {
+                  content:
+                    'Next.js App Router 기반 포트폴리오 대시보드, 프로젝트 상세 페이지, PDF 내보내기 구현',
+                },
+                {
+                  content:
+                    '세션 기반 챗봇 위젯(Framer Motion 애니메이션, 마크다운 렌더링, 추천 질문)',
                 },
               ],
             },
