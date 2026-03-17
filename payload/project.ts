@@ -387,6 +387,29 @@ const project: IProject.Payload = {
             },
           ],
         },
+        {
+          content: '**트러블슈팅 & 성능 개선**',
+          weight: 'BOLD',
+          descriptions: [
+            {
+              content: '**[메모리 누수] k6 부하 테스트 중 세션 메모리 누수 발견 및 해결**',
+              descriptions: [
+                {
+                  content:
+                    '챗봇 API 부하 테스트 중 힙 메모리가 테스트 종료 후에도 baseline으로 복귀하지 않는 현상 발견. Map 기반 세션 저장소에 TTL이 없어 Strong Reference로 영구 잔류하는 것이 원인',
+                },
+                {
+                  content:
+                    'SessionData에 lastAccessedAt를 추가하고 @nestjs/schedule 기반 TTL 정리 스케줄러로 만료 세션 주기적 삭제',
+                },
+                {
+                  content:
+                    '**세션 영구 누적 → idle 후 0건 (100% 해소), RSS 114.80MB → 85.13MB (25.8% 감소)**',
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],
