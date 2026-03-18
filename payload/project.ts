@@ -6,7 +6,7 @@ const project: IProject.Payload = {
     {
       title: 'StoLink & StoRead : 웹소설 작가를 위한 지식 관리 플랫폼',
       startedAt: '2025-12',
-      endedAt: '2026-02',
+      endedAt: '2026-01',
       where:
         '팀 프로젝트 (크래프톤 정글 최종 프로젝트 / 5인 개발 / 기획, 인증·결제 백엔드 + 에디터·관계도 프론트엔드)',
       techStack: [
@@ -343,7 +343,7 @@ const project: IProject.Payload = {
       descriptions: [
         {
           content:
-            'NestJS 기반 포트폴리오 백엔드와 Next.js 프론트엔드를 개발했습니다. RAG 챗봇, 가드레일 필터링, 분석 파이프라인을 모듈 단위로 설계했습니다.',
+            'NestJS 기반 포트폴리오 백엔드와 Next.js 프론트엔드를 개발했습니다. MongoDB 텍스트 검색 기반 챗봇, 가드레일 필터링, 분석 파이프라인을 모듈 단위로 설계했습니다.',
         },
         {
           content: '**담당 구현**',
@@ -359,11 +359,11 @@ const project: IProject.Payload = {
                 },
                 {
                   content:
-                    'MongoDB 가중치 텍스트 인덱스(title 10x, summary 5x, content 1x) 기반 RAG로 이력서 데이터를 검색하고, LLM 컨텍스트에 주입',
+                    'MongoDB 가중치 텍스트 인덱스(title 10x, summary 5x, content 1x)로 관련 이력서 데이터를 검색하고, LLM 컨텍스트에 주입',
                 },
                 {
                   content:
-                    'LLM 가드레일 분류기로 포트폴리오 무관 질문을 사전 필터링하고, 450줄 이상의 시스템 프롬프트로 응답 품질 관리',
+                    'LLM 가드레일 분류기로 포트폴리오 무관 질문을 사전 필터링하고, 페르소나·Teaser Rule·거절 기준 등 역할별 시스템 프롬프트로 응답 품질 관리',
                 },
                 {
                   content:
@@ -396,7 +396,7 @@ const project: IProject.Payload = {
               descriptions: [
                 {
                   content:
-                    '챗봇 API 부하 테스트 중 힙 메모리가 테스트 종료 후에도 baseline으로 복귀하지 않는 현상 발견. Map 기반 세션 저장소에 TTL이 없어 Strong Reference로 영구 잔류하는 것이 원인',
+                    '챗봇 API 부하 테스트 중 힙 메모리가 테스트 종료 후에도 baseline으로 복귀하지 않는 현상 발견. Map 기반 세션 저장소에 삭제 로직이 없어 세션이 영구 잔류하는 것이 원인',
                 },
                 {
                   content:
@@ -404,7 +404,7 @@ const project: IProject.Payload = {
                 },
                 {
                   content:
-                    '**세션 영구 누적 → idle 후 0건 (100% 해소), RSS 114.80MB → 85.13MB (25.8% 감소)**',
+                    '**1,000세션 누적 시 heapUsed 92.85MB → TTL 정리 후 40.35MB, 52MB(56.5%) 회수**',
                 },
               ],
             },
