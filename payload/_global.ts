@@ -3,7 +3,7 @@ import previewImage from '../asset/preview.jpg';
 import { IGlobal } from '../component/common/IGlobal';
 
 const title = '권동하 - Resume';
-const description = '기술에 다정함을 담아 옳은 방향으로 전달하는 소프트웨어 엔지니어 권동하입니다.';
+const description = '탄탄한 기본기와 원리를 중시하는 소프트웨어 엔지니어 권동하입니다.';
 
 export const _global: IGlobal.Payload = {
   favicon,

@@ -85,15 +85,28 @@ const project: IProject.Payload = {
               weight: 'BOLD',
               descriptions: [
                 {
-                  content: '**크레딧 결제 로직 안정성 (동시성 제어 및 멱등키)**',
+                  content: '**외부 API 타임아웃 누락이 일으킨 Cascading Failure 해결**',
                   descriptions: [
                     {
                       content:
-                        '외부 PG(토스페이먼츠) API 응답 지연 시 DB 트랜잭션이 길어져 커넥션 풀이 고갈될 수 있는 구조를 인지하고, 외부 호출을 트랜잭션 밖으로 분리하여 커넥션 점유 시간을 줄임',
+                        '프로덕션 전체 API가 무응답 상태에 빠지는 장애 발생. 쓰레드 덤프를 분석한 결과, AI 서버 헬스체크 RestTemplate에 타임아웃이 설정되지 않아(기본값 무한 대기) @TransactionalEventListener(REQUIRES_NEW) 안에서 DB 커넥션을 쥔 채 쓰레드가 영원히 멈추고 있었음',
                     },
                     {
                       content:
-                        '동시 결제 요청 시 잔액 부정합 방지를 위해 비관적 락, 네트워크 재시도에 의한 중복 결제 방지를 위해 멱등키 적용. Testcontainers 기반 통합 테스트로 **100개 스레드 동시 요청에서 잔액 정합성 100% 검증**',
+                        'RestTemplateBuilder로 5초 Fail-Fast 타임아웃을 강제 적용하여 장애 격리. **대기 요청 20건으로 전체 마비되던 상황에서, 외부 서버 완전 다운 시에도 코어 서비스 정상 응답 확인**',
+                    },
+                  ],
+                },
+                {
+                  content: '**크레딧 결제 로직 안정성 (트랜잭션 분리, 동시성 제어, 멱등키)**',
+                  descriptions: [
+                    {
+                      content:
+                        '위 Cascading Failure를 계기로 결제 플로우에도 동일한 구조적 위험이 있음을 인지. TransactionTemplate을 도입해 검증·PG 호출·DB 반영을 3단계로 분리하여 외부 API 대기 구간에서 커넥션을 점유하지 않도록 선제 격리',
+                    },
+                    {
+                      content:
+                        '잔액 차감·결제 상태 전이 모두 비관적 락(SELECT FOR UPDATE)으로 직렬화하고, @Version을 방어적 안전장치로 병행. 중복 결제 방지에 멱등키 적용. Testcontainers 기반 통합 테스트로 **100개 스레드 동시 요청에서 잔액 정합성 100% 검증**',
                     },
                   ],
                 },
@@ -298,7 +311,7 @@ const project: IProject.Payload = {
                   descriptions: [
                     {
                       content:
-                        'AWS EC2에 Docker Compose로 4개 서비스를 배포. React 정적 리소스는 S3 + CloudFront로 분리하여 CDN 캐싱 적용. ALB로 Spring Boot / Flask 라우팅을 분기 처리하여 멀티 서버 구조 구성',
+                        'AWS EC2에 Docker Compose로 4개 컨테이너를 배포. React 정적 리소스는 S3 + CloudFront로 분리하여 CDN 캐싱 적용. CloudFront 오리진 라우팅으로 Spring Boot / Flask 요청을 경로 기반 분기 처리',
                     },
                   ],
                 },

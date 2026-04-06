@@ -22,8 +22,22 @@ import daangnPayload from '../payload/versions/companies/daangn';
 import argoPayload from '../payload/versions/companies/argo';
 import techtakaPayload from '../payload/versions/companies/techtaka';
 import spartaPayload from '../payload/versions/companies/sparta';
+import enternextPayload from '../payload/versions/companies/enternext';
+import vacatioPayload from '../payload/versions/companies/vacatio';
+import allenPayload from '../payload/versions/companies/allen';
+import miridihPayload from '../payload/versions/companies/miridih';
+import malhaebocaPayload from '../payload/versions/companies/malhaeboca';
+import sempioPayload from '../payload/versions/companies/sempio';
+import conistPayload from '../payload/versions/companies/conist';
+import kyoboPayload from '../payload/versions/companies/kyobo';
+import logenPayload from '../payload/versions/companies/logen';
+import oliveyoungPayload from '../payload/versions/companies/oliveyoung';
 import backendPayload from '../payload/versions/base/backend';
 import fullstackPayload from '../payload/versions/base/fullstack';
+import nextchapterPayload from '../payload/versions/companies/nextchapter';
+import alwayzPayload from '../payload/versions/companies/alwayz';
+import sjhstudioPayload from '../payload/versions/companies/sjhstudio';
+import madrascheckPayload from '../payload/versions/companies/madrascheck';
 
 const PAYLOADS: Record<string, any> = {
   // base
@@ -36,6 +50,20 @@ const PAYLOADS: Record<string, any> = {
   argo: argoPayload,
   techtaka: techtakaPayload,
   sparta: spartaPayload,
+  enternext: enternextPayload,
+  vacatio: vacatioPayload,
+  allen: allenPayload,
+  miridih: miridihPayload,
+  malhaeboca: malhaebocaPayload,
+  sempio: sempioPayload,
+  conist: conistPayload,
+  kyobo: kyoboPayload,
+  logen: logenPayload,
+  oliveyoung: oliveyoungPayload,
+  nextchapter: nextchapterPayload,
+  alwayz: alwayzPayload,
+  sjhstudio: sjhstudioPayload,
+  madrascheck: madrascheckPayload,
 };
 
 function Resume({ payload }: { payload: any }) {

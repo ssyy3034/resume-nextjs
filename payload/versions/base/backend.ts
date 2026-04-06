@@ -27,7 +27,7 @@ const backendPayload: Payload = {
   introduce: {
     ...defaultPayload.introduce,
     contents: [
-      '**기술에 다정함을 담아 옳은 방향으로 전달하는 신입 백엔드 엔지니어 권동하입니다.**',
+      '**탄탄한 기본기와 원리를 중시하는 신입 백엔드 엔지니어 권동하입니다.**',
 
       '**기본기에 충실한 기술의 도입**\n탄탄한 기반이 있어야 새로운 기술도 제대로 활용할 수 있다고 생각합니다. 크래프톤 정글에서 5개월간의 몰입을 통해 자료구조,알고리즘,OS 커널(Pintos) 개발로 CS 지식을 다지고, Spring Boot를 통해 객체 지향과 백엔드 아키텍처를 학습했습니다. 동작 원리 기반의 학습을 통해 다른 기술도 빠르게 배워 적용할수 있습니다.',
 
@@ -331,7 +331,7 @@ const backendPayload: Payload = {
                     descriptions: [
                       {
                         content:
-                          'AWS EC2에 Docker Compose로 4개 서비스를 배포. React 정적 리소스는 S3 + CloudFront로 분리하여 CDN 캐싱 적용. ALB로 Spring Boot / Flask 라우팅을 분기 처리하여 멀티 서버 구조 구성',
+                          'AWS EC2에 Docker Compose로 4개 컨테이너를 배포. React 정적 리소스는 S3 + CloudFront로 분리하여 CDN 캐싱 적용. CloudFront 오리진 라우팅으로 Spring Boot / Flask 요청을 경로 기반 분기 처리',
                       },
                     ],
                   },

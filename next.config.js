@@ -6,7 +6,7 @@ const { NODE_ENV } = process.env;
 
 module.exports = withImages({
   assetPrefix: (() => {
-    if (NODE_ENV === 'production' && homepage) {
+    if (NODE_ENV !== 'development' && homepage) {
       try {
         console.log('> Detected homepage url in package.json');
         const { pathname } = new URL(homepage);
